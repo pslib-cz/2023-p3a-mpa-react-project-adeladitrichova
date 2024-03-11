@@ -1,8 +1,9 @@
-# Název mého projektu, programu, hry...
+# Dobyvatel
 
 ## Téma
 
-Tady bude krátký a úderný popis o účelu, významu, funkcionalitě...
+Jedná se o předělávku legendární vědomostní hry dobyvatel – rozšířenou o možnost volby hraného území a tématických otázek (např. Česká republika, Evropa, Amerika...).
+Možné je hrát ve 2 nebo 3 hráčích.
 
 ## Odkazy pro vývoj
 
