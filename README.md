@@ -2,8 +2,7 @@
 
 ## Téma
 
-Jedná se o předělávku legendární vědomostní hry dobyvatel – rozšířenou o možnost volby hraného území a tématických otázek (např. Česká republika, Evropa, Amerika...).
-Možné je hrát ve 2 nebo 3 hráčích.
+Jedná se o předělávku legendární vědomostní hry dobyvatel – možné je hrát ve 2 nebo 3 hráčích.
 
 ## Odkazy pro vývoj
 
