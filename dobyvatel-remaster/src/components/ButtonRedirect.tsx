@@ -5,13 +5,13 @@ interface ButtonRedirectProps {
     shadowColor: string;
 }
 
-export const ButtonRedirect: React.FC<ButtonRedirectProps> = ({buttonText, shadowColor}) => {
+export const ButtonRedirect: React.FC<ButtonRedirectProps> = ({ buttonText, shadowColor }) => {
     return (
         <>
             <button className="button button--primary"
-                    style={{
-                        boxShadow: `inset 0px 5px 1px 1px ${shadowColor}`
-                    }}>
+                style={{
+                    boxShadow: `inset 0px 5px 1px 1px ${shadowColor}`
+                }}>
                 <p className="text text--button">{buttonText}</p>
             </button>
         </>

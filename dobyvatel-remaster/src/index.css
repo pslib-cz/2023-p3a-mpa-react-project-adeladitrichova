@@ -11,6 +11,10 @@ html {
 
 }
 
+.a--full {
+    width: 100%;
+}
+
 
 body {
     margin: 0;
@@ -20,7 +24,7 @@ body {
     align-items: center;
     height: 100vh;
     background-image: url("../public/images/background-1.png");
-    background-color: rgba(41,31,16,1);
+    background-color: rgba(41, 31, 16, 1);
 }
 
 
@@ -31,7 +35,7 @@ h1 {
     text-transform: uppercase;
     margin: 0 0 -0.25em 0;
     background-color: var(--gold);
-    background-image: linear-gradient(0deg, rgba(138,111,8,1) 35%, rgba(255,191,46,1) 60%, rgba(138,111,8,1) 100%);
+    background-image: linear-gradient(0deg, rgba(138, 111, 8, 1) 35%, rgba(255, 191, 46, 1) 60%, rgba(138, 111, 8, 1) 100%);
     background-size: 100%;
     background-repeat: repeat;
     -webkit-background-clip: text;
@@ -44,7 +48,7 @@ h1 {
     font-size: 5em;
     text-align: center;
     font-weight: bold;
-    background-image: linear-gradient(0deg, rgba(202,173,130,1) 25%, rgba(246,239,227,1) 55%, rgba(202,173,130,1) 75%);
+    background-image: linear-gradient(0deg, rgba(202, 173, 130, 1) 25%, rgba(246, 239, 227, 1) 55%, rgba(202, 173, 130, 1) 75%);
     background-size: 100%;
     background-repeat: repeat;
     -webkit-background-clip: text;
@@ -56,15 +60,14 @@ h1 {
     font-family: 'Inria Serif', serif;
     padding: 1.5em 1em 1.5em 1em;
     width: 100%;
-    background: linear-gradient(0deg, rgba(34,14,3,1) 20%, rgba(64,33,16,1) 60%, rgba(99,56,32,1) 80%, rgba(39,17,5,1) 90%);
+    background: linear-gradient(0deg, rgba(34, 14, 3, 1) 20%, rgba(64, 33, 16, 1) 60%, rgba(99, 56, 32, 1) 80%, rgba(39, 17, 5, 1) 90%);
     border: 0;
     border-radius: 1.5em;
     filter: drop-shadow(1px 4px 2px rgba(19, 6, 1, 0.7));
-    transition: background 1.5s ease-in-out, border-radius 1.5s ease-in-out;
 }
 
 .text--button {
-    background-image: linear-gradient(0deg, rgba(202,173,130,1) 25%, rgba(246,239,227,1) 55%, rgba(202,173,130,1) 75%);
+    background-image: linear-gradient(0deg, rgba(202, 173, 130, 1) 25%, rgba(246, 239, 227, 1) 55%, rgba(202, 173, 130, 1) 75%);
     background-size: 100%;
     background-repeat: repeat;
     font-size: 4em;
