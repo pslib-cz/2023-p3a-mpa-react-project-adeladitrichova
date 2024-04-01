@@ -2,8 +2,35 @@ import Map from "../components/Map"
 import { ButtonRedirect } from '../components/ButtonRedirect.tsx';
 import { Outlet, Route, Routes, Link } from 'react-router-dom'
 import App from "../App.tsx";
+import { actionTypes } from "../utils/types.ts";
+import { useReducer } from 'react';
+import UserForm from "../components/UserForm.tsx";
+import UserCard from "../components/UserCard.tsx";
 
-function Game() {
+const gameReducer = (state, action) => {
+    switch (action.type) {
+        case actionTypes.START_GAME:
+            return { ...state, gameStarted: true };
+        default:
+            return state;
+    }
+};
+
+const initialGameState = {
+    gameStarted: false,
+};
+
+
+
+
+const Game = () => {
+    const [state, dispatch] = useReducer(gameReducer, initialGameState);
+
+    const startGame = () => {
+        dispatch({ type: actionTypes.START_GAME });
+    };
+
+
     return (
         <div>
 
@@ -20,12 +47,18 @@ function Game() {
                 <Route path='/' element={<App />} />
             </Routes>
 
-            <h1>Game</h1>
-            <Map></Map>
+            <UserCard></UserCard>
 
+            {!state.gameStarted ? (
+                <button onClick={startGame}>Start Game</button>
+            ) : (
+                <div>
+                    <Map></Map>
+
+                </div>
+            )}
         </div>
-
-    )
+    );
 }
 
-export default Game
+export default Game;

@@ -6,8 +6,13 @@ const Map: React.FC<MapProps> = (props) => {
     const [selectedArea, setSelectedArea] = useState<string | null>(null);
 
     const handleAreaClick = (areaId: string) => {
-        setSelectedArea(areaId);
-        console.log(`Selected area: ${areaId}`);
+        const input = prompt('Enter the correct input to color the circle:');
+        if (input === areaId) {
+            setSelectedArea(areaId);
+            console.log(`Selected area: ${areaId}`);
+        } else {
+            console.log('Wrong input');
+        }
     };
 
     return (
