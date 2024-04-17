@@ -4,7 +4,6 @@ import { Outlet, Route, Routes, Link } from 'react-router-dom'
 import App from "../App.tsx";
 import { actionTypes } from "../utils/types.ts";
 import { useReducer } from 'react';
-import UserForm from "../components/UserForm.tsx";
 import UserCard from "../components/UserCard.tsx";
 
 const gameReducer = (state, action) => {

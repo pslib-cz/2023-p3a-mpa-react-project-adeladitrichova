@@ -13,8 +13,8 @@ const UserCard: React.FC = () => {
             <UserForm onSubmit={handleFormSubmit} />
             {userData && (
                 <UserCard
-                    username={userData.username}
-                    color={userData.color}
+                    username={userData?.username}
+                    color={userData?.color}
                     points={0}
                 />
             )}

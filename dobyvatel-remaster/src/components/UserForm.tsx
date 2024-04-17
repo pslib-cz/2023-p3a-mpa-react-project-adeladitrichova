@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
+import { UserFormType } from '../utils/types';
 
-interface UserFormProps {
-    onSubmit: (username: string, color: string) => void;
-}
 
-const UserForm: React.FC<UserFormProps> = ({ onSubmit }) => {
+const UserForm: React.FC<UserFormType> = ({ onSubmit }) => {
     const [username, setUsername] = useState<string>('');
     const [color, setColor] = useState<string>('');
 

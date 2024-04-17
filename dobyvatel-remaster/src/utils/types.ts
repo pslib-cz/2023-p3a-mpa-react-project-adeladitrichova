@@ -1,20 +1,34 @@
-
 export type UserCardType = {
     username: string;
     color: string;
     points: number;
 };
 
-export type QuestionType = {
+
+export type UserFormType = {
+    onSubmit: (username: string, color: string) => void;
+};
+
+
+export type StringQuestionType = {
     text: string;
     answers: string[];
-    correctAnswer: number;
+    correctAnswer: string;
 };
+
+export type SelectQuestionType = {
+    question: string;
+    options: {
+        text: string;
+        isCorrect: boolean;
+    }[];
+}
+
 
 export type PlaceType = {
     name: string;
-    owner: 'red' | 'yellow' | null;
-    question: QuestionType;
+    owner: 'red' | 'yellow' | 'green' | null;
+    question: SelectQuestionType | StringQuestionType;
 };
 
 export type RoundType = {
@@ -29,6 +43,12 @@ export type GameType = {
     redPoints: number;
     yellowPoints: number;
     roundNumber: number;
+};
+
+export type RegionsType = {
+    id: string;
+    d: string;
+    fill: string;
 };
 
 export type MapProps = {
