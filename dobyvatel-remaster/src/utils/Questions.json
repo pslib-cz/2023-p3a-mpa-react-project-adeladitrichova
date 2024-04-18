@@ -1,0 +1,70 @@
+{
+  "1": {
+    "id": 1,
+    "type": "option",
+    "text": "Kolik je v Evropské Unii zemí?",
+    "options": [
+      {
+        "a": "25",
+        "b": "27",
+        "c": "28",
+        "d": "30"
+      }
+    ],
+    "answer": "c"
+  },
+
+  "2": {
+    "id": 2,
+    "type": "option",
+    "text": "Jak se křestním jménem jmenuje autor písně 'Ledový srdce'?",
+    "options": [
+      {
+        "a": "Lukáš",
+        "b": "Tomáš",
+        "c": "Nemáš",
+        "d": "Nemá křestní jméno"
+      }
+    ],
+    "answer": "a"
+  },
+
+  "3": {
+    "id": 3,
+    "type": "option",
+    "text": "Jak se křestním jménem jmenuje autor písně 'Ledový srdce'?",
+    "options": [
+      {
+        "a": "Lukáš",
+        "b": "Tomáš",
+        "c": "Nemáš",
+        "d": "Nemá křestní jméno"
+      }
+    ],
+    "answer": "a"
+  },
+
+  "4": {
+    "id": 4,
+    "type": "write",
+    "text": "Kolik je v České republice krajů?",
+    "correctAnswer": "14",
+    "timeLimit": 15
+  },
+
+  "5": {
+    "id": 5,
+    "type": "write",
+    "text": "Kolik je 2+1*7?",
+    "correctAnswer": "21",
+    "timeLimit": 15
+  },
+
+  "6": {
+    "id": 6,
+    "type": "write",
+    "text": "V jakém roce bylo založeno město Brno?",
+    "correctAnswer": "1243",
+    "timeLimit": 15
+  }
+}

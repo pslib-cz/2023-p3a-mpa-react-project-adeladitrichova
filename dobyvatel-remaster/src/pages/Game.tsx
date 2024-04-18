@@ -4,7 +4,6 @@ import { Outlet, Route, Routes, Link } from 'react-router-dom'
 import App from "../App.tsx";
 import { actionTypes } from "../utils/types.ts";
 import { useReducer } from 'react';
-import UserCard from "../components/UserCard.tsx";
 
 const gameReducer = (state, action) => {
     switch (action.type) {
@@ -45,8 +44,6 @@ const Game = () => {
                 </Route>
                 <Route path='/' element={<App />} />
             </Routes>
-
-            <UserCard></UserCard>
 
             {!state.gameStarted ? (
                 <button onClick={startGame}>Start Game</button>

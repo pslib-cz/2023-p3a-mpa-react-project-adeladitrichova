@@ -1,4 +1,7 @@
-export type UserCardType = {
+// USER TYPES
+
+export type UserType = {
+    userId: string;
     username: string;
     color: string;
     points: number;
@@ -10,60 +13,69 @@ export type UserFormType = {
 };
 
 
-export type StringQuestionType = {
-    text: string;
-    answers: string[];
-    correctAnswer: string;
-};
+//QUESTION TYPES
 
-export type SelectQuestionType = {
-    question: string;
-    options: {
-        text: string;
-        isCorrect: boolean;
-    }[];
+export type QuestionType = QuestionOptionType | QuestionWriteType;
+
+export type Option = {
+    a: string;
+    b: string;
+    c: string;
+    d: string;
+}
+
+export type QuestionOptionType = {
+    id: number;
+    type: "option";
+    text: string;
+    options: Option[];
+    answer: string;
+    timeLimit: number;
+}
+
+export type QuestionWriteType = {
+    id: number;
+    type: "write";
+    text: string;
+    correctAnswer: string;
+    timeLimit: number;
+}
+
+export interface QuestionSet {
+    [key: string]: QuestionType;
 }
 
 
-export type PlaceType = {
-    name: string;
-    owner: 'red' | 'yellow' | 'green' | null;
-    question: SelectQuestionType | StringQuestionType;
-};
+//MAP TYPES
 
-export type RoundType = {
-    currentPlace: PlaceType;
-    timeRemaining: number;
-    questionAnswered: boolean;
-};
-
-export type GameType = {
-    places: PlaceType[];
-    currentRound: RoundType;
-    redPoints: number;
-    yellowPoints: number;
-    roundNumber: number;
-};
-
-export type RegionsType = {
+export type SVGData = {
     id: string;
     d: string;
-    fill: string;
-};
+    fill: UserType;
+    range: string[];
+    taken: boolean;
+    base: [
+        {
+            owner: UserType;
+            points: number;
+        }
+    ]
+    onClick: () => void;
 
-export type MapProps = {
-    points: number;
-    id: string;
-    color: string;
-    selectPlace: (placeIndex: number) => void;
-};
+}
 
-export enum actionTypes {
+// ACTIONS
+
+export enum actionGameTypes {
     START_GAME,
-    ANSWER_QUESTION,
-    NEXT_ROUND,
     END_GAME,
-    SELECT_PLACE,
-    SELECT_COLOR,
+    SET_USER,
+    SET_COLOR,
+    SET_BASE,
+    SET_POINTS,
+    ATTACK,
+
+
 
 };
+
