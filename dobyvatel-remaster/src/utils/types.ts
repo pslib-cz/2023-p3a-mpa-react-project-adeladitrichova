@@ -53,10 +53,6 @@ export type MapData = {
     base: boolean;
 }
 
-export type MapDataCollection = {
-    [key: string]: MapData;
-}
-
 // ACTIONS
 
 export enum actionGameTypes {
