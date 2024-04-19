@@ -1,18 +1,3 @@
-// USER TYPES
-
-export type UserType = {
-    userId: string;
-    username: string;
-    color: string;
-    points: number;
-};
-
-
-export type UserFormType = {
-    onSubmit: (username: string, color: string) => void;
-};
-
-
 //QUESTION TYPES
 
 export type QuestionType = QuestionOptionType | QuestionWriteType;
@@ -41,27 +26,35 @@ export type QuestionWriteType = {
     timeLimit: number;
 }
 
-export interface QuestionSet {
+export type QuestionSet = {
     [key: string]: QuestionType;
+}
+
+// USER TYPES
+
+export type PlayerType = {
+    id: string;
+    username: string;
+    color: "red" | "green" | "yellow";
+    points: number;
+    base: string;
+    isPlaying: boolean;
 }
 
 
 //MAP TYPES
 
-export type SVGData = {
+export type MapData = {
     id: string;
     d: string;
-    fill: UserType;
+    fill: "#CEB288" | PlayerType["color"] ;
     range: string[];
-    taken: boolean;
-    base: [
-        {
-            owner: UserType;
-            points: number;
-        }
-    ]
-    onClick: () => void;
+    owner: null | PlayerType["id"];
+    base: boolean;
+}
 
+export type MapDataCollection = {
+    [key: string]: MapData;
 }
 
 // ACTIONS
@@ -73,9 +66,10 @@ export enum actionGameTypes {
     SET_COLOR,
     SET_BASE,
     SET_POINTS,
-    ATTACK,
-
-
-
-};
+    ATTACK_BASE,
+    ATTACK_REGION,
+    SET_TAKEN,
+    SET_WINNER,
+    SET_TURN,
+}
 

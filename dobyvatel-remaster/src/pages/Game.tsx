@@ -2,12 +2,12 @@ import Map from "../components/Map"
 import { ButtonRedirect } from '../components/ButtonRedirect.tsx';
 import { Outlet, Route, Routes, Link } from 'react-router-dom'
 import App from "../App.tsx";
-import { actionTypes } from "../utils/types.ts";
+import { actionGameTypes } from "../utils/types.ts";
 import { useReducer } from 'react';
 
 const gameReducer = (state, action) => {
     switch (action.type) {
-        case actionTypes.START_GAME:
+        case actionGameTypes.START_GAME:
             return { ...state, gameStarted: true };
         default:
             return state;
@@ -25,7 +25,7 @@ const Game = () => {
     const [state, dispatch] = useReducer(gameReducer, initialGameState);
 
     const startGame = () => {
-        dispatch({ type: actionTypes.START_GAME });
+        dispatch({ type: actionGameTypes.START_GAME });
     };
 
 

@@ -1,57 +1,43 @@
-import { useEffect, useState } from "react";
-import { QuestionSet, QuestionType } from "../utils/types";
+import React, { useState, useEffect } from 'react';
+import questions from '../utils/Questions.json';
+import { QuestionType, QuestionOptionType, QuestionWriteType } from '../utils/types';
 
-const QuestionComponent = () => {
-    // State for questions
-    const [questions, setQuestions] = useState<QuestionSet>({});
-    // State for currently displayed question
-    const [currentQuestion, setCurrentQuestion] = useState<QuestionType | null>(null);
+const QuestionCard: React.FC = () => {
+    const [question, setQuestion] = useState<QuestionType | null>(null);
 
-    // Fetch questions on component mount
     useEffect(() => {
-        const fetchQuestions = async () => {
-            try {
-                const response = await fetch("../utils/Questions.json");
-                const data = await response.json();
-                setQuestions(data);
-                console.log("Questions fetched:", data)
-            } catch (error) {
-                console.error("Error fetching questions:", error);
-            }
-        };
-
-        fetchQuestions();
-    }, []);
-
-    // Function to select a random question
-    const selectRandomQuestion = () => {
         const questionKeys = Object.keys(questions);
         const randomKey = questionKeys[Math.floor(Math.random() * questionKeys.length)];
-        const randomQuestion = questions[randomKey];
-        setCurrentQuestion(randomQuestion);
-    };
+        setQuestion(questions[randomKey]);
+    }, []);
 
-    // Render the component
-    return (
-        <div>
-            <button onClick={selectRandomQuestion}>Next Question</button>
-            {currentQuestion && (
-                <div key={currentQuestion.id}>
-                    <h2>{currentQuestion.text}</h2>
-                    {currentQuestion.type === "option" && (
-                        <ul>
-                            {currentQuestion.options.map((option, index) => (
-                                <li key={index}>{String(option)}</li>
-                            ))}
-                        </ul>
-                    )}
-                    {currentQuestion.type === "write" && (
-                        <input type="text" placeholder="Your answer" />
-                    )}
-                </div>
-            )}
-        </div>
-    );
+    if (!question) {
+        return <div>Loading...</div>;
+    }
+
+    if (question.type === 'option') {
+        const questionOption = question as QuestionOptionType;
+        return (
+            <div>
+                <p>{questionOption.text}</p>
+                {questionOption.options.map((option, index) => (
+                    <p key={index}>{String.fromCharCode(97 + index)}: {option}</p>
+                ))}
+            </div>
+        );
+    }
+
+    if (question.type === 'write') {
+        const questionWrite = question as QuestionWriteType;
+        return (
+            <div>
+                <p>{questionWrite.text}</p>
+                <input type="text" />
+            </div>
+        );
+    }
+
+    return null;
 };
 
-export default QuestionComponent;
+export default QuestionCard;
