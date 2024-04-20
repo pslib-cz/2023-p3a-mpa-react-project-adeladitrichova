@@ -8,7 +8,7 @@ const QuestionCard: React.FC = () => {
     useEffect(() => {
         const questionKeys = Object.keys(questions);
         const randomKey = questionKeys[Math.floor(Math.random() * questionKeys.length)];
-        setQuestion(questions[randomKey]);
+        setQuestion(questions[randomKey]); //TODO: fix this
     }, []);
 
     if (!question) {

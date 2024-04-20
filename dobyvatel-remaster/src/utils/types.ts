@@ -30,12 +30,16 @@ export type QuestionSet = {
     [key: string]: QuestionType;
 }
 
+export type QuestionCardProps = {
+    areaId: string;
+}
+
 // USER TYPES
 
 export type PlayerType = {
     id: string;
     username: string;
-    color: "red" | "green" | "yellow";
+    color: "red";
     points: number;
     base: string;
     isPlaying: boolean;
@@ -51,21 +55,22 @@ export type MapData = {
     range: string[];
     owner: null | PlayerType["id"];
     base: boolean;
+
 }
 
 // ACTIONS
 
-export enum actionGameTypes {
-    START_GAME,
-    END_GAME,
-    SET_USER,
-    SET_COLOR,
-    SET_BASE,
-    SET_POINTS,
-    ATTACK_BASE,
-    ATTACK_REGION,
-    SET_TAKEN,
-    SET_WINNER,
-    SET_TURN,
-}
+
+export type gameInitialState = {
+    gameStarted: false,
+    gameEnded: false,
+    user: null,
+    color: null,
+    base: null,
+    points: 0,
+    taken: [],
+    winner: null,
+    turn: null,
+};
+
 
