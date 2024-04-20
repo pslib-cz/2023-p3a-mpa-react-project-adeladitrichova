@@ -11,7 +11,7 @@ export const botInitialState = {
     isPlaying: false,
 };
 
-export function botReducer(state: botInitialState, action) {
+export function botReducer(state, action) {
     switch (action.type) {
         case 'SET_BASE':
             return { ...state, base: action.payload };
@@ -25,8 +25,6 @@ export function botReducer(state: botInitialState, action) {
             return state;
     }
 }
-
-const [botState, botDispatch] = useReducer(botReducer, botInitialState);
 
 const handleAreaClick = (areaId: string) => {
     setSelectedArea(areaId);
