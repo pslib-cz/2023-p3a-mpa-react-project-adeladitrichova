@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import { gameReducer } from './GameReducer';
+import {GameAction, gameReducer} from './GameReducer';
 import { botReducer, botInitialState } from '../components/Bot.tsx';
 
 
@@ -7,14 +7,14 @@ export const GameContext = React.createContext<GameContextProps | undefined>(
     undefined,
 );
 
-export type GameState = typeof gameInitialState;
+export type GameState = typeof initialGameState;
 export type BotState = typeof botInitialState;
 
 type GameContextProps = {
     gameState: GameState;
-    gameDispatch: React.Dispatch<Action>;
+    gameDispatch: React.Dispatch<GameAction>;
     botState: BotState;
-    botDispatch: React.Dispatch<Action>;
+    botDispatch: React.Dispatch<GameAction>;
 };
 
 export const useGame = () => {
