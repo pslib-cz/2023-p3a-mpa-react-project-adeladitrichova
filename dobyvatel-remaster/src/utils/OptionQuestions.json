@@ -1,0 +1,75 @@
+[
+  {
+    "id": 1,
+    "text": "Kolik je v Evropské Unii zemí?",
+    "options": [
+      {
+        "a": "25",
+        "b": "27",
+        "c": "28",
+        "d": "30"
+      }
+    ],
+    "answer": "c"
+    
+  },
+
+  {
+    "id": 2,
+    "text": "Jak se křestním jménem jmenuje autor písně 'Ledový srdce'?",
+    "options": [
+      {
+        "a": "Lukáš",
+        "b": "Tomáš",
+        "c": "Nemáš",
+        "d": "Nemá křestní jméno"
+      }
+    ],
+    "answer": "a"
+  },
+
+  {
+    "id": 3,
+    "text": "Jak se nazývá největší kočkovitá šelma na západní polokouli?",
+    "options": [
+      {
+        "a": "Tygr usurijský",
+        "b": "Ocelot velký",
+        "c": "Puma americká",
+        "d": "Jaguár americký"
+      }
+    ],
+    "answer": "d"
+    
+  },
+
+  {
+    "id": 4,
+    "text": "Který druh tuleně žije mj. u finského jezera Saimaa a je předmětem ochrany národního parku Linnasaari?",
+    "options": [
+      {
+        "a": "Tuleň kuželozubý",
+        "b": "Tuleň grónský",
+        "c": "Tuleň kroužkovaný",
+        "d": "Tuleň vousatý"
+      }
+    ],
+    "answer": "c"
+
+  },
+
+  {
+    "id": 5,
+    "text": "Jaký ekvivalent má u nás japonský svátek Ošógacu?",
+    "options": [
+      {
+        "a": "Vánoce",
+        "b": "Nový rok",
+        "c": "Velikonoce",
+        "d": "Dušičky"
+      }
+    ],
+    "answer": "b"
+
+  }
+]

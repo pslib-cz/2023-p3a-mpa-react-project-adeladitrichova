@@ -3,6 +3,13 @@
 :root {
     --dark-brown: #220e03;
     --gold: #A3810CFF;
+    --cream: #D6BF9D;
+    --light-cream: #F6EDE1;
+}
+
+#root {
+    width: 100%;
+    margin: 0 24em 0 24em;
 }
 
 html {
@@ -10,11 +17,6 @@ html {
     font-family: 'Inria Serif', serif;
 
 }
-
-.a--full {
-    width: 100%;
-}
-
 
 body {
     margin: 0;
@@ -25,6 +27,80 @@ body {
     height: 100vh;
     background-image: url("../public/images/background-1.png");
     background-color: rgba(41, 31, 16, 1);
+}
+
+.root {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-card {
+    position: absolute; /* nebo absolute, podle vašich potřeb */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.box--buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+}
+
+.box--titles {
+    margin-bottom: 8em;
+}
+
+.box--questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+    background: linear-gradient(0deg, rgba(34,14,3,1) 19%, rgba(64,33,16,1) 62%, rgba(99,56,32,1) 89%, rgba(39,17,5,1) 99%);
+    padding: 3em;
+    height: 22em;
+
+}
+
+.box--button-grid {
+    width: 100%;
+    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.box--top {
+    display: flex;
+    justify-content: center;
+
+}
+
+.top--red {
+    background: linear-gradient(0deg, rgba(72,1,1,1) 0%, rgba(187,47,47,1) 70%, rgba(156,35,35,1) 100%);
+    padding: 0.5em;
+    width: 20%;
+    border-top-left-radius: 2em;
+
+}
+
+.top--green {
+    background: linear-gradient(0deg, rgba(32,52,12,1) -1%, rgba(92,157,52,1) 70%, rgba(58,148,41,1) 100%);
+    padding: 0.5em;
+    width: 20%;
+    border-top-right-radius: 2em;
+}
+
+.top--gold {
+    background: linear-gradient(180deg, rgba(169,110,20,1) 0%, rgba(255,239,100,1) 22%, rgba(210,172,58,1) 41%, rgba(169,110,20,1) 100%);
+    padding: 0.5em;
+    width: 2em;
 }
 
 
@@ -45,7 +121,6 @@ h1 {
 
 .text--secondary {
     margin: 0;
-    font-size: 5em;
     text-align: center;
     font-weight: bold;
     background-image: linear-gradient(0deg, rgba(202, 173, 130, 1) 25%, rgba(246, 239, 227, 1) 55%, rgba(202, 173, 130, 1) 75%);
@@ -56,14 +131,21 @@ h1 {
     filter: drop-shadow(1px 4px 4px rgba(19, 6, 1, 0.9));
 }
 
-.button--primary {
-    font-family: 'Inria Serif', serif;
-    padding: 1.5em 1em 1.5em 1em;
-    width: 100%;
-    background: linear-gradient(0deg, rgba(34, 14, 3, 1) 20%, rgba(64, 33, 16, 1) 60%, rgba(99, 56, 32, 1) 80%, rgba(39, 17, 5, 1) 90%);
-    border: 0;
-    border-radius: 1.5em;
-    filter: drop-shadow(1px 4px 2px rgba(19, 6, 1, 0.7));
+.text--light {
+    color: var(--light-cream);
+}
+
+.text--s {
+    font-size: 2em;
+}
+
+.text--m {
+    font-size: 3em;
+}
+
+.text--l {
+    font-size: 5em;
+
 }
 
 .text--button {
@@ -79,29 +161,41 @@ h1 {
     transition: background-image 1.5s ease;
 }
 
-.box--buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2em;
+.text--button:hover {
+    background-image: linear-gradient(0deg, rgb(180, 150, 105) 25%, rgb(225, 211, 183) 55%, rgb(180, 150, 105) 75%);
+
 }
 
-.box--titles {
-    margin-bottom: 8em;
-}
-
-#root {
+.button {
+    font-family: 'Inria Serif', serif;
     width: 100%;
-    margin: 0 24em 0 24em;
+    background: linear-gradient(0deg, rgba(34, 14, 3, 1) 20%, rgba(64, 33, 16, 1) 60%, rgba(99, 56, 32, 1) 80%, rgba(39, 17, 5, 1) 90%);
+    border: 0;
+    filter: drop-shadow(1px 4px 2px rgba(19, 6, 1, 0.7));
+    border-radius: 1.5em;
 }
 
-.button--primary:hover {
+.button--primary {
+    padding: 1.5em 1em 1.5em 1em;
+}
+
+.button--secondary {
+    padding: 1em 0.5em 1em 0.5em;
+    -webkit-box-shadow: inset 0px 4px 1px 1px rgba(169,110,20,1);
+    -moz-box-shadow: inset 0px 4px 1px 1px rgba(169,110,20,1);
+    box-shadow: inset 0px 4px 1px 1px rgba(169,110,20,1);
+}
+
+.button:hover {
     background: linear-gradient(0deg, rgb(17, 8, 2) 20%, rgb(44, 22, 9) 60%, rgb(77, 41, 22) 80%, rgb(17, 8, 2) 90%);
     border-radius: 1.5em;
 }
 
-.text--button:hover {
-    background-image: linear-gradient(0deg, rgb(180, 150, 105) 25%, rgb(225, 211, 183) 55%, rgb(180, 150, 105) 75%);
+.link--full {
+    width: 100%;
+}
 
+.map {
+    width: 80%;
+    height: 80%;
 }

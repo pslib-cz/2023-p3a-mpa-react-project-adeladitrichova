@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import QuestionCard from './QuestionCard';
+import OptionQuestionCard from './OptionQuestionCard.tsx';
 import { ZLI, JHC, VYS, KAR, HRA, OLO, PAR, PRA, STR, PLZ, MOR, JHM, LIB, UST } from "./MapParts.tsx";
+import { useGame } from '../utils/GameContext.tsx';
+import { actionGameTypes } from '../utils/GameReducer.tsx';
 
 const Map: React.FC = () => {
+    const { gameDispatch } = useGame();
     const [selectedArea, setSelectedArea] = useState<string | null>(null);
-
     const handleAreaClick = (areaId: string) => {
         setSelectedArea(areaId);
-
+        const isBase = areaId === ZLI.id || areaId === LIB.id || areaId === UST.id;
+        const actionType = isBase ? actionGameTypes.ATTACK_BASE : actionGameTypes.ATTACK_REGION;
+        gameDispatch({ type: actionType, payload: { areaId } });
     };
 
     return (
-        <>
-            <svg width="1920" height="1080" viewBox="0 0 644 366" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="map">
+            <svg width="1280" height="720" viewBox="0 0 644 366" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id={ZLI.id} d={ZLI.d} fill={selectedArea === "ZLI" ? ZLI.fill : "#D9D9D9"} onClick={() => handleAreaClick("ZLI")} />
                 <path id={LIB.id} d={LIB.d} fill={selectedArea === "LIB" ? LIB.fill : "#D9D9D9"} onClick={() => handleAreaClick("LIB")} />
                 <path id={JHC.id} d={JHC.d} fill={selectedArea === "JHC" ? JHC.fill : "#D9D9D9"} onClick={() => handleAreaClick("JHC")} />
@@ -29,8 +33,8 @@ const Map: React.FC = () => {
                 <path id={UST.id} d={UST.d} fill={selectedArea === "UST" ? UST.fill : "#D9D9D9"} onClick={() => handleAreaClick("UST")} />
             </svg>
 
-            {selectedArea && <QuestionCard areaId={selectedArea} />}
-        </>
+            {selectedArea && <OptionQuestionCard areaId={selectedArea} />}
+        </div>
     );
 };
 

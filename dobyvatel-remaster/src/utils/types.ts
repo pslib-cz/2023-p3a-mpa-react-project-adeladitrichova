@@ -1,33 +1,24 @@
 //QUESTION TYPES
 
-export type QuestionType = QuestionOptionType | QuestionWriteType;
-
 export type Option = {
     a: string;
     b: string;
     c: string;
     d: string;
+    [key: string]: string;
 }
 
-export type QuestionOptionType = {
+export type OptionQuestion = {
     id: number;
-    type: "option";
     text: string;
     options: Option[];
     answer: string;
-    timeLimit: number;
 }
 
-export type QuestionWriteType = {
+export type InputQuestion = {
     id: number;
-    type: "write";
     text: string;
-    correctAnswer: string;
-    timeLimit: number;
-}
-
-export type QuestionSet = {
-    [key: string]: QuestionType;
+    correctAnswer: number;
 }
 
 export type QuestionCardProps = {
@@ -61,16 +52,16 @@ export type MapData = {
 // ACTIONS
 
 
-export type gameInitialState = {
-    gameStarted: false,
-    gameEnded: false,
-    user: null,
-    color: null,
-    base: null,
-    points: 0,
-    taken: [],
-    winner: null,
-    turn: null,
-};
+export interface GameState {
+    gameStarted: boolean;
+    gameEnded: boolean;
+    user: string | null;
+    color: string | null;
+    base: string | null;
+    points: number;
+    taken: string[];
+    winner: string | null;
+    turn: string | null;
+}
 
 

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "text": "Kolik je v České republice krajů?",
+    "correctAnswer": 14
+  },
+  {
+    "id": 2,
+    "text": "Kolik je 2+1*7?",
+    "correctAnswer": 9
+  },
+  {
+    "id": 3,
+    "text": "V jakém roce bylo založeno město Brno?",
+    "correctAnswer": 1243
+  },
+  {
+    "id": 4,
+    "text": "Na kolik spolkových zemí je rozděleno Rakousko?",
+    "correctAnswer": 9
+  },
+  {
+    "id": 5,
+    "text": "Ve kterém roce se hrál poprvé hokej na olympijských hrách?",
+    "correctAnswer": 1920
+  },
+  {
+    "id": 6,
+    "text": "S kolika státy USA hraničí Oregon",
+    "correctAnswer": 4
+  }
+]
