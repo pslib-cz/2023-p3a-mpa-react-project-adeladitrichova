@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import OptionQuestionCard from './OptionQuestionCard.tsx';
+import InputQuestionCard from './InputQuestionCard.tsx';
 import { ZLI, JHC, VYS, KAR, HRA, OLO, PAR, PRA, STR, PLZ, MOR, JHM, LIB, UST } from "./MapParts.tsx";
 import { useGame } from '../utils/GameContext.tsx';
 import { actionGameTypes } from '../utils/GameReducer.tsx';
@@ -15,8 +15,10 @@ const Map: React.FC = () => {
     };
 
     return (
+        <div>
+
         <div className="map">
-            <svg width="1280" height="720" viewBox="0 0 644 366" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="960" height="540" viewBox="0 0 644 366" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path id={ZLI.id} d={ZLI.d} fill={selectedArea === "ZLI" ? ZLI.fill : "#D9D9D9"} onClick={() => handleAreaClick("ZLI")} />
                 <path id={LIB.id} d={LIB.d} fill={selectedArea === "LIB" ? LIB.fill : "#D9D9D9"} onClick={() => handleAreaClick("LIB")} />
                 <path id={JHC.id} d={JHC.d} fill={selectedArea === "JHC" ? JHC.fill : "#D9D9D9"} onClick={() => handleAreaClick("JHC")} />
@@ -33,7 +35,8 @@ const Map: React.FC = () => {
                 <path id={UST.id} d={UST.d} fill={selectedArea === "UST" ? UST.fill : "#D9D9D9"} onClick={() => handleAreaClick("UST")} />
             </svg>
 
-            {selectedArea && <OptionQuestionCard areaId={selectedArea} />}
+            {selectedArea && <InputQuestionCard areaId={selectedArea} />}
+        </div>
         </div>
     );
 };

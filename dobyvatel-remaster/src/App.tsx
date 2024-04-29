@@ -17,9 +17,9 @@ function App() {
               <p className="text text--secondary text--l">remaster</p>
             </div>
             <div className="box box--buttons">
-              <Link className="link--full" to='/game' element={<Game />}><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)" buttonText={"Hrát"} ></ButtonRedirect></Link>
-              <Link className="link--full" to='/rules' element={<Rules />}><ButtonRedirect shadowColor="rgba(161, 128, 12, 1)" buttonText={"Pravidla"}></ButtonRedirect></Link>
-              <Link className="link--full" to='/options' element={<Options />}><ButtonRedirect shadowColor="rgba(58, 148, 41, 1)" buttonText={"Možnosti"}></ButtonRedirect></Link>
+              <Link className="link--full" to='/game' element={<Game />}><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)" buttonText={"Hrát"} width={"100%"} ></ButtonRedirect></Link>
+              <Link className="link--full" to='/rules' element={<Rules />}><ButtonRedirect shadowColor="rgba(161, 128, 12, 1)" buttonText={"Pravidla"} width={"100%"}></ButtonRedirect></Link>
+              <Link className="link--full" to='/options' element={<Options />}><ButtonRedirect shadowColor="rgba(58, 148, 41, 1)" buttonText={"Možnosti"} width={"100%"}></ButtonRedirect></Link>
               <Outlet />
             </div>
           </div>

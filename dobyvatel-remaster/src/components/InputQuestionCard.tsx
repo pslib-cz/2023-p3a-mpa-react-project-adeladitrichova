@@ -16,25 +16,43 @@ const InputQuestionCard: React.FC = () => {
         if (timer > 0) {
             setTimeout(() => setTimer(timer - 1), 1000);
         } else {
-            if (userAnswer === question?.correctAnswer) {
-                console.log('spravne');
-            }
-            setUserAnswer(null);
+            evaluateAnswer();
             setTimer(15);
             const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
             setQuestion(randomQuestion);
         }
-    }, [timer, userAnswer, question]);
+    }, [timer]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUserAnswer(Number(event.target.value));
     };
 
+    const evaluateAnswer = () => {
+        if (userAnswer === question?.correctAnswer) {
+            console.log('Správně');
+        } else {
+            console.log('Špatně');
+        }
+        setUserAnswer(null);
+    };
+
+    const handleConfirmClick = () => {
+        evaluateAnswer();
+    };
+
     return (
-        <div>
-            <h2>{question?.text}</h2>
-            <input type="number" onChange={handleInputChange} />
-            <p>Time left: {timer}</p>
+        <div className="question-card">
+            <div className="box box--top">
+                <div className="top--red"><p className="text--secondary text--s">Hráč 1</p></div>
+                <div className="top--gold"><p className="text--secondary text--s">{timer}</p></div>
+                <div className="top--green"><p className="text--secondary text--s">Hráč 2</p></div>
+            </div>
+            <div className="box box--questions box--input">
+                <p className="text--secondary text--m">{question?.text}</p>
+                <input type="number" onChange={handleInputChange} className="input"/>
+                <button onClick={handleConfirmClick} className="button button--secondary">
+                    <p className="text--m text--secondary">Potvrdit</p></button>
+            </div>
         </div>
     );
 };

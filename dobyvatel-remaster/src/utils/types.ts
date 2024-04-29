@@ -28,7 +28,6 @@ export type QuestionCardProps = {
 // USER TYPES
 
 export type PlayerType = {
-    id: string;
     username: string;
     color: "red";
     points: number;
@@ -44,7 +43,7 @@ export type MapData = {
     d: string;
     fill: "#CEB288" | PlayerType["color"] ;
     range: string[];
-    owner: null | PlayerType["id"];
+    owner: null | PlayerType["username"];
     base: boolean;
 
 }

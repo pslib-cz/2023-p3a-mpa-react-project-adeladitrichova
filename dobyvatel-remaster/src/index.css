@@ -9,7 +9,7 @@
 
 #root {
     width: 100%;
-    margin: 0 24em 0 24em;
+    margin: 2em 12em 0 12em;
 }
 
 html {
@@ -44,6 +44,12 @@ body {
     width: 100%;
 }
 
+.card--player {
+    position: fixed;
+    bottom: 0;
+    width: 20%;
+}
+
 .box--buttons {
     display: flex;
     flex-direction: column;
@@ -64,7 +70,7 @@ body {
     gap: 2em;
     background: linear-gradient(0deg, rgba(34,14,3,1) 19%, rgba(64,33,16,1) 62%, rgba(99,56,32,1) 89%, rgba(39,17,5,1) 99%);
     padding: 3em;
-    height: 22em;
+    height: 120%;
 
 }
 
@@ -80,6 +86,27 @@ body {
     display: flex;
     justify-content: center;
 
+}
+
+.box--input {
+    padding: 3em 10% 3em 10%;
+}
+
+.box--player {
+    background: linear-gradient(0deg, rgba(34,14,3,1) 0%, rgba(101,57,33,1) 70%, rgba(34,14,3,1) 100%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2em 1em 2em;
+}
+
+.box--points {
+    background: radial-gradient(circle, rgba(70,38,19,1) 20%, rgba(34,14,3,1) 75%, rgba(10,4,1,1) 100%);
+    padding: 0.7em;
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    -webkit-box-shadow: inset 0px -2px 4px 0px rgba(192,106,58,1);
+    -moz-box-shadow: inset 0px -2px 4px 0px rgba(192,106,58,1);
+    box-shadow: inset 0px -2px 4px 0px rgba(192,106,58,1);
 }
 
 .top--red {
@@ -101,6 +128,13 @@ body {
     background: linear-gradient(180deg, rgba(169,110,20,1) 0%, rgba(255,239,100,1) 22%, rgba(210,172,58,1) 41%, rgba(169,110,20,1) 100%);
     padding: 0.5em;
     width: 2em;
+}
+
+.top--player {
+    background: linear-gradient(0deg, rgba(72,1,1,1) 0%, rgba(187,47,47,1) 70%, rgba(156,35,35,1) 100%);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    padding: 0.2em;
 }
 
 
@@ -133,6 +167,10 @@ h1 {
 
 .text--light {
     color: var(--light-cream);
+}
+
+.text--xs {
+    font-size: 1.5em;
 }
 
 .text--s {
@@ -168,7 +206,6 @@ h1 {
 
 .button {
     font-family: 'Inria Serif', serif;
-    width: 100%;
     background: linear-gradient(0deg, rgba(34, 14, 3, 1) 20%, rgba(64, 33, 16, 1) 60%, rgba(99, 56, 32, 1) 80%, rgba(39, 17, 5, 1) 90%);
     border: 0;
     filter: drop-shadow(1px 4px 2px rgba(19, 6, 1, 0.7));
@@ -180,6 +217,7 @@ h1 {
 }
 
 .button--secondary {
+    width: 100%;
     padding: 1em 0.5em 1em 0.5em;
     -webkit-box-shadow: inset 0px 4px 1px 1px rgba(169,110,20,1);
     -moz-box-shadow: inset 0px 4px 1px 1px rgba(169,110,20,1);
@@ -195,7 +233,39 @@ h1 {
     width: 100%;
 }
 
+.input {
+    width: 100%;
+    padding: 0.5em 0.2em 0.5em 0.2em;
+    border-radius: 0.5em;
+    border: 0.15em solid #A96E14FF;
+    background: linear-gradient(180deg, rgba(45,18,3,1) 0%, rgba(34,14,3,1) 12%, rgba(27,14,7,1) 31%, rgba(27,13,6,1) 51%, rgba(26,12,4,1) 74%, rgba(37,16,4,1) 94%, rgba(40,21,10,1) 100%);
+    color: var(--light-cream);
+    font-size: 2.5em;
+    font-family: 'Inria Serif', serif;
+    text-align: center;
+}
+
+.input:focus{
+    outline: 2px solid #88570c;
+}
+
 .map {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    display: none;
 }
