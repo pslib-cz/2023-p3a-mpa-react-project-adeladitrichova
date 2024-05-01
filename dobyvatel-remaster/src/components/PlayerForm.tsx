@@ -15,17 +15,18 @@ const PlayerForm: React.FC<PlayerFormProps> = ({ player, setPlayer }) => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        setPlayer({ ...player, username: name });
+        setPlayer({ ...player, username: name, points: 1000 });
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Player Name:
-                <input type="text" value={name} onChange={handleNameChange} />
-            </label>
-            <button type="submit">Save</button>
-        </form>
+        <>
+            <form onSubmit={handleSubmit} className="box--form">
+                <label className="text--secondary text--s">Select your username:</label>
+                <input type="text" value={name} onChange={handleNameChange} className="input box--input" />
+                <button type="submit" className="button button--secondary"><p
+                    className="text--secondary text--s">Save</p></button>
+            </form>
+        </>
     );
 };
 
