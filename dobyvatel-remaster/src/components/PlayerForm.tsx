@@ -15,7 +15,7 @@ const PlayerForm: React.FC<PlayerFormProps> = ({ player, setPlayer }) => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        setPlayer({ ...player, username: name, points: 1000 });
+        setPlayer({ ...player, username: name, points: 0 });
     };
 
     return (

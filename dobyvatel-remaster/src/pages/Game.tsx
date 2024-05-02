@@ -14,8 +14,8 @@ const Game = () => {
     const { gameState, gameDispatch, regions, setRegions } = useGame();
 
     //USER & BOT
-    const [player, setPlayer] = useState<PlayerType>({username: '', points: 0, base: '', isPlaying: false, color: 'red'});
-    const [bot] = useState<BotType>({ username: 'BOT', points: 0, base: '', isPlaying: false, color: 'green' });
+    const [player, setPlayer] = useState<PlayerType>({ username: '', points: 0, base: '', isPlaying: false, color: 'red' });
+    const [bot, setBot] = useState<BotType>({ username: 'BOT', points: 0, base: '', isPlaying: false, color: 'green' });
 
     //ARRAY
     const randomItemFromArray = (array: any[]): any => {
@@ -27,9 +27,11 @@ const Game = () => {
     const getBase = () => {
         const playerBase = randomItemFromArray(regions)
         const botBase = randomItemFromArray(regions.filter((region) => region.id !== playerBase.id))
+        setPlayer(prevPlayer => ({ ...prevPlayer, points: 1000 }));
+        setBot(prevBot => ({ ...prevBot, points: 1000 }));
         setRegions((prevRegions) => prevRegions.map((region) => {
             if (region.id === playerBase.id) {
-                return { ...region, owner: player.username, lives: 3, fill: player.color };
+                return { ...region, owner: player.username, lives: 3, fill: player.color, };
             }
             if (region.id === botBase.id)
                 return { ...region, owner: bot.username, lives: 3, fill: bot.color };
@@ -46,6 +48,13 @@ const Game = () => {
         getBase();
     };
 
+    const handleEndGame = () => {
+        gameDispatch({
+            type: actionGameTypes.END_GAME,
+            payload: ''
+        });
+    }
+
     return (
         <div>
             <Routes>
@@ -53,7 +62,7 @@ const Game = () => {
                     <div className="content">
                         <div className="menu">
                             <Link to='/' element={<App />}><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
-                                                                           buttonText={"🏠︎"} width={""}></ButtonRedirect></Link>
+                                buttonText={"🏠︎"} width={""}></ButtonRedirect></Link>
                             < Outlet />
                         </div>
                     </div>
@@ -71,6 +80,7 @@ const Game = () => {
                 <div>
                     <PlayerCard player={player} bot={bot} />
                     <Map></Map>
+                    <button onClick={handleEndGame}>X</button>
                 </div>
             )}
         </div>
