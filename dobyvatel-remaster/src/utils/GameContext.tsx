@@ -1,6 +1,6 @@
 import React, {createContext, useReducer, useState} from 'react';
 import {GameAction, gameReducer} from './GameReducer';
-import {BotType, PlayerType} from "./types.ts";
+import {BotType, PlayerType, RegionState} from "./types.ts";
 
 export const GameContext = createContext<GameContextProps | undefined>(undefined);
 
@@ -11,7 +11,12 @@ type GameContextProps = {
     gameDispatch: React.Dispatch<GameAction>;
     regions: RegionState[];
     setRegions: React.Dispatch<React.SetStateAction<RegionState[]>>;
+    player: PlayerType;
+    setPlayer: React.Dispatch<React.SetStateAction<PlayerType>>;
+    bot: BotType;
+    setBot: React.Dispatch<React.SetStateAction<BotType>>;
 };
+
 
 export const useGame = () => {
     const context = React.useContext(GameContext);
@@ -31,14 +36,6 @@ export const initialGameState = {
     turn: null,
 };
 
-export type RegionState = {
-    id: string;
-    d: string;
-    fill: string;
-    range: string[];
-    owner: null | PlayerType["username"] | BotType["username"];
-    lives: number;
-};
 
 export const regionsInitialState: RegionState[] = [
     {
@@ -158,9 +155,12 @@ export const regionsInitialState: RegionState[] = [
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [gameState, gameDispatch] = useReducer(gameReducer, initialGameState);
     const [regions, setRegions] = useState<RegionState[]>(regionsInitialState);
+    const [player, setPlayer] = useState<PlayerType>({ username: '', points: 0, base: '', isPlaying: false, color: 'red' });
+    const [bot, setBot] = useState<BotType>({ username: 'BOT', points: 0, base: '', isPlaying: false, color: 'green' });
+
 
     return (
-        <GameContext.Provider value={{ gameState, gameDispatch, regions, setRegions }}>
+        <GameContext.Provider value={{ gameState, gameDispatch, regions, setRegions, player, setPlayer, bot, setBot }}>
             {children}
         </GameContext.Provider>
     );

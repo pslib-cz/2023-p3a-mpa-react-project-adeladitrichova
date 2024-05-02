@@ -10,7 +10,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, bot }) => {
     return (
         <div className="box--flex">
         <div className="card--player">
-            <div className="top--player">
+            <div className="top--player top--player--red">
                 <p className="text text--secondary text--xs">{player.username}</p>
             </div>
             <div className="box--player">
@@ -19,7 +19,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, bot }) => {
             </div>
         </div>
             <div className="card--player">
-                <div className="top--player">
+                <div className="top--player top--player--green">
                     <p className="text text--secondary text--xs">{bot.username}</p>
                 </div>
                 <div className="box--player">

@@ -1,22 +1,15 @@
-import { useState } from 'react';
 import Map from "../components/Map"
 import { ButtonRedirect } from '../components/ButtonRedirect.tsx';
 import { Outlet, Route, Routes, Link } from 'react-router-dom'
 import App from "../App.tsx";
-import { actionGameTypes } from "../utils/types.ts";
+import { actionGameTypes } from "../utils/GameReducer.tsx";
 import { useGame } from '../utils/GameContext.tsx';
 import PlayerCard from "../components/PlayerCard.tsx";
 import PlayerForm from "../components/PlayerForm.tsx";
-import { BotType, PlayerType } from '../utils/types.ts';
 
 //CONTEXT
 const Game = () => {
-    const { gameState, gameDispatch, regions, setRegions } = useGame();
-
-    //USER & BOT
-    const [player, setPlayer] = useState<PlayerType>({ username: '', points: 0, base: '', isPlaying: false, color: 'red' });
-    const [bot, setBot] = useState<BotType>({ username: 'BOT', points: 0, base: '', isPlaying: false, color: 'green' });
-
+    const { gameState, gameDispatch, regions, setRegions, player, setPlayer, bot, setBot } = useGame();
     //ARRAY
     const randomItemFromArray = (array: any[]): any => {
         const randomIndex = Math.floor(Math.random() * array.length);
@@ -48,12 +41,6 @@ const Game = () => {
         getBase();
     };
 
-    const handleEndGame = () => {
-        gameDispatch({
-            type: actionGameTypes.END_GAME,
-            payload: ''
-        });
-    }
 
     return (
         <div>
@@ -62,7 +49,7 @@ const Game = () => {
                     <div className="content">
                         <div className="menu">
                             <Link to='/' element={<App />}><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
-                                buttonText={"🏠︎"} width={""}></ButtonRedirect></Link>
+                                                                           buttonText={"🏠︎"} width={""}></ButtonRedirect></Link>
                             < Outlet />
                         </div>
                     </div>
@@ -80,7 +67,6 @@ const Game = () => {
                 <div>
                     <PlayerCard player={player} bot={bot} />
                     <Map></Map>
-                    <button onClick={handleEndGame}>X</button>
                 </div>
             )}
         </div>
