@@ -32,6 +32,7 @@ const Game = () => {
         }));
     };
 
+
     //START GAME
     const handleStartGame = () => {
         gameDispatch({
@@ -39,6 +40,16 @@ const Game = () => {
             payload: ''
         });
         getBase();
+
+        setTimeout(() => {
+            gameDispatch({
+                type: actionGameTypes.PARTITION,
+                payload: ''
+            });
+
+
+
+        }, 10000);
     };
 
 
