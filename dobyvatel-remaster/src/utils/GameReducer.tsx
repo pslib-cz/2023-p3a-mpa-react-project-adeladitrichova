@@ -1,4 +1,4 @@
-import { gameInitialState} from './types.ts';
+import { gameInitialState} from './GameContext.tsx';
 
 export enum actionGameTypes {
     START_GAME,

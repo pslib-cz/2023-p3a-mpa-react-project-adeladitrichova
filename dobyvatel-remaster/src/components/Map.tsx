@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import InputQuestionCard from './InputQuestionCard.tsx';
 import { GameContext } from '../utils/GameContext.tsx';
-import { RegionState } from '../utils/GameContext.tsx';
 
-const Map: React.FC<RegionState> = () => {
+const Map: React.FC = () => {
     const [selectedArea, setSelectedArea] = useState<string | null>(null);
+    const context = useContext(GameContext);
+    const regions = context?.regions ?? [];
+
     const handleAreaClick = (areaId: string) => {
         setSelectedArea(areaId);
     };
-
-    const { regions } = useContext(GameContext);
 
     return (
         <div>
