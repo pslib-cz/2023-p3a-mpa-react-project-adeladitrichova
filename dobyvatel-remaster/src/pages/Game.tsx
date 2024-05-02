@@ -6,9 +6,12 @@ import { actionGameTypes } from "../utils/GameReducer.tsx";
 import { useGame } from '../utils/GameContext.tsx';
 import PlayerCard from "../components/PlayerCard.tsx";
 import PlayerForm from "../components/PlayerForm.tsx";
+import InputQuestionCard from "../components/InputQuestionCard.tsx";
+import {useState} from "react";
 
 //CONTEXT
 const Game = () => {
+    const [showFirstQuestion, setShowFirstQuestion] = useState(false);
     const { gameState, gameDispatch, regions, setRegions, player, setPlayer, bot, setBot } = useGame();
     //ARRAY
     const randomItemFromArray = (array: any[]): any => {
@@ -33,6 +36,8 @@ const Game = () => {
     };
 
 
+
+
     //START GAME
     const handleStartGame = () => {
         gameDispatch({
@@ -47,8 +52,7 @@ const Game = () => {
                 payload: ''
             });
 
-
-
+            setShowFirstQuestion(true);
         }, 10000);
     };
 
@@ -76,6 +80,7 @@ const Game = () => {
                 </>
             ) : (
                 <div>
+                    {showFirstQuestion && <InputQuestionCard />}
                     <PlayerCard player={player} bot={bot} />
                     <Map></Map>
                 </div>
