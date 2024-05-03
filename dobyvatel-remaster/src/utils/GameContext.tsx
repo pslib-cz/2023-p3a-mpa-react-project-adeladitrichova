@@ -1,6 +1,6 @@
 import React, {createContext, useReducer, useState} from 'react';
 import {GameAction, gameReducer} from './GameReducer';
-import {BotType, PlayerType, RegionState} from "./types.ts";
+import {BotType, InputQuestion, PlayerType, RegionState} from "./types.ts";
 
 export const GameContext = createContext<GameContextProps | undefined>(undefined);
 
@@ -15,6 +15,22 @@ type GameContextProps = {
     setPlayer: React.Dispatch<React.SetStateAction<PlayerType>>;
     bot: BotType;
     setBot: React.Dispatch<React.SetStateAction<BotType>>;
+    inputQuestion: InputQuestion;
+    setInputQuestion: React.Dispatch<React.SetStateAction<InputQuestion>>;
+    playerInputAnswer: number | null;
+    setPlayerInputAnswer: React.Dispatch<React.SetStateAction<number | null>>;
+    botInputAnswer: number | null;
+    setBotInputAnswer: React.Dispatch<React.SetStateAction<number | null>>;
+    timer: number;
+    setTimer: React.Dispatch<React.SetStateAction<number>>;
+    startTime: number | null;
+    setStartTime: React.Dispatch<React.SetStateAction<number | null>>;
+    endTime: number | null;
+    setEndTime: React.Dispatch<React.SetStateAction<number | null>>;
+    inputWinner: string | null;
+    setInputWinner: React.Dispatch<React.SetStateAction<string | null>>;
+    showInputResults: boolean;
+    setShowInputResults: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 
@@ -152,15 +168,54 @@ export const regionsInitialState: RegionState[] = [
     }
 ];
 
-export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}) => {
     const [gameState, gameDispatch] = useReducer(gameReducer, initialGameState);
     const [regions, setRegions] = useState<RegionState[]>(regionsInitialState);
-    const [player, setPlayer] = useState<PlayerType>({ username: '', points: 0, base: '', isPlaying: false, color: 'red' });
-    const [bot, setBot] = useState<BotType>({ username: 'BOT', points: 0, base: '', isPlaying: false, color: 'green' });
+    const [player, setPlayer] = useState<PlayerType>({
+        username: '',
+        points: 0,
+        base: '',
+        isPlaying: false,
+        color: 'red'
+    });
+    const [bot, setBot] = useState<BotType>({username: 'BOT', points: 0, base: '', isPlaying: false, color: 'green'});
+    const [inputQuestion, setInputQuestion] = useState<InputQuestion | null>(null);
+    const [playerInputAnswer, setPlayerInputAnswer] = useState<number | null>(null);
+    const [botInputAnswer, setBotInputAnswer] = useState<number | null>(null);
+    const [timer, setTimer] = useState<number>(15);
+    const [startTime, setStartTime] = useState<number | null>(null);
+    const [endTime, setEndTime] = useState<number | null>(null);
+    const [inputWinner, setInputWinner] = useState<string | null>(null);
+    const [showInputResults, setShowInputResults] = useState(false);
 
 
     return (
-        <GameContext.Provider value={{ gameState, gameDispatch, regions, setRegions, player, setPlayer, bot, setBot }}>
+        <GameContext.Provider value={{
+            gameState,
+            gameDispatch,
+            regions,
+            setRegions,
+            player,
+            setPlayer,
+            bot,
+            setBot,
+            inputQuestion,
+            setInputQuestion,
+            playerInputAnswer,
+            setPlayerInputAnswer,
+            botInputAnswer,
+            setBotInputAnswer,
+            timer,
+            setTimer,
+            startTime,
+            setStartTime,
+            endTime,
+            setEndTime,
+            inputWinner,
+            setInputWinner,
+            showInputResults,
+            setShowInputResults
+        }}>
             {children}
         </GameContext.Provider>
     );

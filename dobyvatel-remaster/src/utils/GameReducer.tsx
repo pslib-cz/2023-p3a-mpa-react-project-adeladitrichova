@@ -4,6 +4,7 @@ export enum actionGameTypes {
     START_GAME,
     END_GAME,
     PARTITION,
+    SELECT_REGION,
 
 }
 
@@ -12,6 +13,7 @@ export type GameAction =
     | { type: actionGameTypes.START_GAME; payload: { } }
     | { type: actionGameTypes.END_GAME; payload: { } }
     | { type: actionGameTypes.PARTITION; payload: { } }
+
 
 export function gameReducer(state: gameInitialState, action: GameAction) {
     switch (action.type) {
@@ -22,6 +24,9 @@ export function gameReducer(state: gameInitialState, action: GameAction) {
             return { ...state, gameEnded: true };
 
         case actionGameTypes.PARTITION:
+            return { ...state, partition: true };
+
+        case actionGameTypes.SELECT_REGION:
             return { ...state, partition: true };
 
         default:
