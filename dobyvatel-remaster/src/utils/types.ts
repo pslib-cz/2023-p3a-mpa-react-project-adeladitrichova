@@ -32,7 +32,9 @@ export type PlayerType = {
     color: string;
     points: number;
     base: string;
+    regions: string[];
     isPlaying: boolean;
+    baseColor: string;
 }
 
 export type BotType = {
@@ -40,7 +42,9 @@ export type BotType = {
     color: string;
     points: number;
     base: string;
+    regions: string[];
     isPlaying: boolean;
+    baseColor: string;
 }
 
 //MAP TYPES

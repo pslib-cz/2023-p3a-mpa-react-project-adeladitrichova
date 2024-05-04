@@ -29,8 +29,18 @@ const InputQuestionCard: React.FC = () => {
         setInputQuestion(randomQuestion);
     }, []);
 
+    const handleBotAnswer = () => {
+        if (inputQuestion !== null) {
+            const correctAnswer = inputQuestion.correctAnswer;
+            const randomOffset = Math.floor(Math.random() * 21) - 10;
+            const randomAnswer = correctAnswer + randomOffset;
+            setBotInputAnswer(randomAnswer);
+        }
+    }
+
     useEffect(() => {
         if (timer > 0) {
+            handleBotAnswer()
             const timeout = setTimeout(() => setTimer(timer - 1), 1000);
             return () => clearTimeout(timeout);
         } else {
@@ -43,14 +53,7 @@ const InputQuestionCard: React.FC = () => {
         setPlayerInputAnswer(Number(event.target.value));
     };
 
-    const handleBotAnswer = () => {
-        if (inputQuestion !== null) {
-            const correctAnswer = inputQuestion.correctAnswer;
-            const randomOffset = Math.floor(Math.random() * 21) - 10;
-            const randomAnswer = correctAnswer + randomOffset;
-            setBotInputAnswer(randomAnswer);
-        }
-    }
+
 
     const handleConfirmClick = () => {
         evaluateAnswer();
@@ -65,6 +68,7 @@ const InputQuestionCard: React.FC = () => {
             setEndTime(Date.now());
             const timeTaken = Math.floor((endTime - startTime) / 1000);
             console.log(`User took ${timeTaken} seconds to answer.`);
+
         }
     };
 
@@ -107,6 +111,8 @@ const InputQuestionCard: React.FC = () => {
         setEndTime(null);
     };
 
+
+
     return (
         <div>
             {showInputResults ? (
@@ -133,7 +139,6 @@ const InputQuestionCard: React.FC = () => {
                     </div>
                     <div className="box box--questions box--input">
                         <p className="text--secondary text--m">{inputQuestion?.text}</p>
-                        <button onClick={handleBotAnswer} className="button button--secondary">BOT ANSWER?</button>
                         <input type="number" onChange={handleInputChange} className="input" onFocus={handleStartTimer}
                                onBlur={handleStopTimer}/>
                         <button onClick={handleConfirmClick} className="button button--secondary">

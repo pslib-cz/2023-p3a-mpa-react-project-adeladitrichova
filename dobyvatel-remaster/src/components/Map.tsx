@@ -1,14 +1,12 @@
-import React, { useContext, useState } from 'react';
-import InputQuestionCard from './InputQuestionCard.tsx';
-import { GameContext } from '../utils/GameContext.tsx';
+import React from 'react';
+import { useGame } from '../utils/GameContext.tsx';
 
 const Map: React.FC = () => {
-    const [selectedArea, setSelectedArea] = useState<string | null>(null);
-    const context = useContext(GameContext);
-    const regions = context?.regions ?? [];
+    const { regions, setSelectedRegion, showInputResults, gamePhase, inputWinner, player } = useGame();
 
-    const handleAreaClick = (areaId: string) => {
-        setSelectedArea(areaId);
+    const handleAreaClick = (regionId: string) => {
+            setSelectedRegion(regionId);
+            console.log('Clicked region ID:', regionId);
     };
 
     return (
@@ -18,13 +16,18 @@ const Map: React.FC = () => {
                     {
                         regions.map((region) => {
                             return (
-                                <path key={region.id} id={region.id} d={region.d} fill={region.fill} onClick={() => handleAreaClick(region.id)} />
+                                <path
+                                    key={region.id}
+                                    id={region.id}
+                                    d={region.d}
+                                    fill={region.fill}
+                                    onClick={() => handleAreaClick(region.id)}
+                                    pointerEvents={(showInputResults || gamePhase !== 'PARTITION' || inputWinner !== player.username) ? 'none' : 'auto'}
+                                />
                             );
                         })
                     }
                 </svg>
-
-                {selectedArea && <InputQuestionCard areaId={selectedArea} />}
             </div>
         </div>
     );

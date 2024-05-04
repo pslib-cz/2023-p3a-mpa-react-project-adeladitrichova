@@ -31,6 +31,10 @@ type GameContextProps = {
     setInputWinner: React.Dispatch<React.SetStateAction<string | null>>;
     showInputResults: boolean;
     setShowInputResults: React.Dispatch<React.SetStateAction<boolean>>;
+    gamePhase: string;
+    setGamePhase: React.Dispatch<React.SetStateAction<string>>;
+    selectedRegion: string;
+    setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>
 };
 
 
@@ -176,9 +180,19 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
         points: 0,
         base: '',
         isPlaying: false,
-        color: 'red'
+        color: '#C93333',
+        baseColor: '#A70303',
+        regions: [],
     });
-    const [bot, setBot] = useState<BotType>({username: 'BOT', points: 0, base: '', isPlaying: false, color: 'green'});
+    const [bot, setBot] = useState<BotType>({
+        username: 'BOT',
+        points: 0,
+        base: '',
+        isPlaying: false,
+        color: '#5EBA3D',
+        baseColor: '#236604',
+        regions: [],
+    });
     const [inputQuestion, setInputQuestion] = useState<InputQuestion | null>(null);
     const [playerInputAnswer, setPlayerInputAnswer] = useState<number | null>(null);
     const [botInputAnswer, setBotInputAnswer] = useState<number | null>(null);
@@ -187,6 +201,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [endTime, setEndTime] = useState<number | null>(null);
     const [inputWinner, setInputWinner] = useState<string | null>(null);
     const [showInputResults, setShowInputResults] = useState(false);
+    const [gamePhase, setGamePhase] = useState('');
+    const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
 
 
     return (
@@ -214,7 +230,11 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
             inputWinner,
             setInputWinner,
             showInputResults,
-            setShowInputResults
+            setShowInputResults,
+            gamePhase,
+            setGamePhase,
+            selectedRegion,
+            setSelectedRegion
         }}>
             {children}
         </GameContext.Provider>
