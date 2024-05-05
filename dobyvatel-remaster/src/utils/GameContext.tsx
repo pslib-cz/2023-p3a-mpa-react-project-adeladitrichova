@@ -34,7 +34,9 @@ type GameContextProps = {
     gamePhase: string;
     setGamePhase: React.Dispatch<React.SetStateAction<string>>;
     selectedRegion: string;
-    setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>
+    setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>;
+    playerNeedsToChoose: boolean;
+    setPlayerNeedsToChoose: React.Dispatch<React.SetStateAction<boolean>>
 };
 
 
@@ -203,6 +205,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [showInputResults, setShowInputResults] = useState(false);
     const [gamePhase, setGamePhase] = useState('');
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+    const [playerNeedsToChoose, setPlayerNeedsToChoose] = useState(false);
 
 
     return (
@@ -234,7 +237,9 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
             gamePhase,
             setGamePhase,
             selectedRegion,
-            setSelectedRegion
+            setSelectedRegion,
+            playerNeedsToChoose,
+            setPlayerNeedsToChoose
         }}>
             {children}
         </GameContext.Provider>

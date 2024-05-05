@@ -2,12 +2,9 @@ import React from 'react';
 import { useGame } from '../utils/GameContext.tsx';
 
 const Map: React.FC = () => {
-    const { regions, setSelectedRegion, showInputResults, gamePhase, inputWinner, player } = useGame();
+    const { regions, gamePhase, inputWinner, player, playerNeedsToChoose, setSelectedRegion, selectedRegion } = useGame();
+        console.log( 'SELECTEDREGION:', selectedRegion);
 
-    const handleAreaClick = (regionId: string) => {
-            setSelectedRegion(regionId);
-            console.log('Clicked region ID:', regionId);
-    };
 
     return (
         <div>
@@ -21,8 +18,8 @@ const Map: React.FC = () => {
                                     id={region.id}
                                     d={region.d}
                                     fill={region.fill}
-                                    onClick={() => handleAreaClick(region.id)}
-                                    pointerEvents={(showInputResults || gamePhase !== 'PARTITION' || inputWinner !== player.username) ? 'none' : 'auto'}
+                                    onClick={() => setSelectedRegion(region.id)}
+                                    pointerEvents={(gamePhase === 'REGION_SELECT' && inputWinner === player.username || playerNeedsToChoose ) ? 'auto' : 'none'}
                                 />
                             );
                         })

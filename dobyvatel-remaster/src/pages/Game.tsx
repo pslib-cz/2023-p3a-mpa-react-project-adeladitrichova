@@ -11,7 +11,7 @@ import {useEffect, useState} from "react";
 
 //CONTEXT
 const Game = () => {
-    const [showFirstQuestion, setShowQuestion] = useState(false);
+    const [showQuestion, setShowQuestion] = useState(false);
     const {
         gameState,
         gameDispatch,
@@ -24,6 +24,7 @@ const Game = () => {
         gamePhase,
         setGamePhase,
         inputWinner,
+        setInputWinner,
         showInputResults,
         selectedRegion,
     } = useGame();
@@ -58,7 +59,7 @@ const Game = () => {
         const botRegion = randomItemFromArray(regions.filter((region) => region.owner === null))
 
         if (inputWinner === player.username) {
-            setPlayer(prevPlayer => ({...prevPlayer, points: player.points +200}));
+            setPlayer(prevPlayer => ({...prevPlayer, points: prevPlayer.points +200}));
             setRegions(prevRegions => prevRegions.map(region => {
                 if (region.id === playerRegion) {
                     return {...region, owner: player.username, fill: player.color};
@@ -68,7 +69,7 @@ const Game = () => {
         }
 
         else if (inputWinner === bot.username) {
-            setBot(prevBot => ({...prevBot, points: bot.points +200}));
+            setBot(prevBot => ({...prevBot, points: prevBot.points +200}));
             setRegions(prevRegions => prevRegions.map(region => {
                 if (region.id === botRegion.id) {
                     return {...region, owner: bot.username, fill: bot.color};
@@ -77,7 +78,6 @@ const Game = () => {
             }));
         }
     };
-
 
 
     //START GAME
@@ -97,12 +97,16 @@ const Game = () => {
         if (showInputResults) {
             const timer = setTimeout(() => {
                 setShowQuestion(false);
+                setGamePhase('REGION_SELECT');
             }, 5000);
             return () => clearTimeout(timer);
         }
         console.log('VYHERCE:', inputWinner);
         getRegion();
+        setInputWinner(null);
+        console.log('VYHERCE vynul:', inputWinner);
     }, [showInputResults]);
+
 
 
 
@@ -130,7 +134,8 @@ const Game = () => {
                 </>
             ) : (
                 <div>
-                    {showFirstQuestion && <InputQuestionCard/>}
+                    {}
+                    {showQuestion && <InputQuestionCard/>}
                     <PlayerCard player={player} bot={bot}/>
                     <Map></Map>
                 </div>
