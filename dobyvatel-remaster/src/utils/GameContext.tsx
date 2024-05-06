@@ -34,7 +34,7 @@ type GameContextProps = {
     gamePhase: string;
     setGamePhase: React.Dispatch<React.SetStateAction<string>>;
     selectedRegion: string;
-    setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>;
+    setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>
     playerNeedsToChoose: boolean;
     setPlayerNeedsToChoose: React.Dispatch<React.SetStateAction<boolean>>
 };

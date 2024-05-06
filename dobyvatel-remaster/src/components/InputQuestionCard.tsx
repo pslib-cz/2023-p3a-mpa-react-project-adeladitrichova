@@ -24,10 +24,31 @@ const InputQuestionCard: React.FC = () => {
         setShowInputResults
     } = useGame();
 
+    const resetTimer = () => {
+        setTimer(15);
+    };
+
     useEffect(() => {
         const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+        resetTimer();
         setInputQuestion(randomQuestion);
     }, []);
+
+    useEffect(() => {
+        if (showInputResults) {
+            // If input results are shown, reset the timer and handle the results
+            resetTimer();
+            // Handle input results...
+        } else {
+            // If input results are not shown, decrement the timer
+            const interval = setInterval(() => {
+                setTimer(prevTimer => prevTimer - 1);
+            }, 1000);
+
+            // Clear the interval when the component unmounts or when a new question is displayed
+            return () => clearInterval(interval);
+        }
+    }, [showInputResults]);
 
     const handleBotAnswer = () => {
         if (inputQuestion !== null) {

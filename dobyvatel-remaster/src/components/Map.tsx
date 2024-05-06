@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useGame } from '../utils/GameContext.tsx';
 
 const Map: React.FC = () => {
     const { regions, gamePhase, inputWinner, player, playerNeedsToChoose, setSelectedRegion, selectedRegion } = useGame();
-        console.log( 'SELECTEDREGION:', selectedRegion);
 
+    // Use useEffect to perform actions after selectedRegion has been updated
+    useEffect(() => {
+        // Perform actions that depend on selectedRegion here
+        console.log('SELECTEDREGION:', selectedRegion);
+    }, [selectedRegion]);
+
+    const handleClick = (regionId: string) => {
+        setSelectedRegion(regionId);
+    };
 
     return (
         <div>
@@ -18,8 +26,8 @@ const Map: React.FC = () => {
                                     id={region.id}
                                     d={region.d}
                                     fill={region.fill}
-                                    onClick={() => setSelectedRegion(region.id)}
-                                    pointerEvents={(gamePhase === 'REGION_SELECT' && inputWinner === player.username || playerNeedsToChoose ) ? 'auto' : 'none'}
+                                    onClick={() => handleClick(region.id)}
+                                    pointerEvents={(gamePhase === 'REGION_SELECT' && inputWinner === player.username || playerNeedsToChoose) ? 'auto' : 'none'}
                                 />
                             );
                         })
@@ -31,3 +39,26 @@ const Map: React.FC = () => {
 };
 
 export default Map;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
