@@ -17,8 +17,8 @@ type GameContextProps = {
     setBot: React.Dispatch<React.SetStateAction<BotType>>;
     inputQuestion: InputQuestion;
     setInputQuestion: React.Dispatch<React.SetStateAction<InputQuestion>>;
-    playerInputAnswer: number | null;
-    setPlayerInputAnswer: React.Dispatch<React.SetStateAction<number | null>>;
+    playerInputAnswer: number;
+    setPlayerInputAnswer: React.Dispatch<React.SetStateAction<number>>;
     botInputAnswer: number | null;
     setBotInputAnswer: React.Dispatch<React.SetStateAction<number | null>>;
     timer: number;
@@ -196,7 +196,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
         regions: [],
     });
     const [inputQuestion, setInputQuestion] = useState<InputQuestion | null>(null);
-    const [playerInputAnswer, setPlayerInputAnswer] = useState<number | null>(null);
+    const [playerInputAnswer, setPlayerInputAnswer] = useState<number>(0);
     const [botInputAnswer, setBotInputAnswer] = useState<number | null>(null);
     const [timer, setTimer] = useState<number>(15);
     const [startTime, setStartTime] = useState<number | null>(null);

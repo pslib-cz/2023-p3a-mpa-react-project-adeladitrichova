@@ -124,10 +124,11 @@ const InputQuestionCard: React.FC = () => {
                 return {inputWinner}
             }
         } else if (playerInputAnswer === null && inputQuestion !== null && botInputAnswer !== null) {
-            console.log('Hráč neodpověděl včas');
             setPlayerInputAnswer(0);
+            console.log('Hráč neodpověděl včas');
+
         }
-        setPlayerInputAnswer(null);
+        setPlayerInputAnswer(0);
         setStartTime(null);
         setEndTime(null);
     };
@@ -160,7 +161,7 @@ const InputQuestionCard: React.FC = () => {
                     </div>
                     <div className="box box--questions box--input">
                         <p className="text--secondary text--m">{inputQuestion?.text}</p>
-                        <input type="number" onChange={handleInputChange} className="input" onFocus={handleStartTimer}
+                        <input type="number" onChange={handleInputChange} className="input input--width" onFocus={handleStartTimer}
                                onBlur={handleStopTimer}/>
                         <button onClick={handleConfirmClick} className="button button--secondary">
                             <p className="text--m text--secondary">Potvrdit</p></button>

@@ -75,6 +75,36 @@ const Game = () => {
         }
     };
 
+/*    const attackRegion = () => {
+        const Attacker = '';
+        const attackedByPlayerRegion = selectedRegion;
+        const attackedByBotRegion = randomItemFromArray(regions.filter((region) => region.owner === player.username))
+
+        if (Attacker === player.username) {
+            setPlayer(prevPlayer => ({...prevPlayer, points: prevPlayer.points + 200}));
+
+            setRegions(prevRegions => prevRegions.map(region => {
+                if (region.id === attackedByPlayerRegion && region.owner === bot.username) {
+                    return {...region, lives: region.lives - 1};
+                } else if (region.id === attackedByBotRegion && region.owner === player.username && winner === bot.username) {
+                    return {...region, lives: 1, owner: bot.username, fill: bot.color};
+                }
+                return region;
+            }));
+
+        } else if (Attacker === bot.username) {
+            setBot(prevBot => ({...prevBot, points: prevBot.points + 200}));
+            setRegions(prevRegions => prevRegions.map(region => {
+                if (region.id === attackedByBotRegion && region.owner === player.username) {
+                    return {...region, lives: region.lives - 1};
+                } else if (region.id === attackedByBotRegion && region.owner === player.username && winner === bot.username) {
+                    return {...region, lives: 1, owner: bot.username, fill: bot.color};
+                }
+                return region;
+            }));
+        }
+    }*/
+
     //START GAME
     const handleStartGame = () => {
         setGamePhase('PARTITION');
@@ -95,7 +125,6 @@ const Game = () => {
             }, 5000);
         }
     }, [gameState.gameStarted, gamePhase, displayNextQuestion]);
-
 
 
     useEffect(() => {
@@ -133,8 +162,10 @@ const Game = () => {
             const unownedRegions = regions.filter(region => region.owner === null);
             if (unownedRegions.length === 0) {
                 console.log('PLNO!!!')
-
+                setGamePhase('ATTACK');
                 setDisplayNextQuestion(false);
+                console.log(gamePhase)
+
             } else {
                 console.log('NENI PLNO!!!')
 
@@ -165,27 +196,27 @@ const Game = () => {
             {!gameState.gameStarted ? (
                 <>
                     <PlayerForm player={player} setPlayer={setPlayer}/>
-                    <button onClick={handleStartGame}>Spustit hru</button>
+                        <button onClick={handleStartGame} className="button button--secondary"><p className="text--secondary text--s">Spustit hru</p></button>
                 </>
             ) : (
                 <div>
                     {showQuestion && <InputQuestionCard/>}
-                    {gamePhase === 'BASE_SELECT' && <div>
-                        <h2>Přiřazení základen...</h2>
+                    {gamePhase === 'BASE_SELECT' && <div className="box--phase">
+                        <p className="text--secondary text--s">Přiřazení základen...</p>
                     </div>}
 
-                    {gamePhase === 'INPUT_QUESTION' && <div>
+                    {gamePhase === 'INPUT_QUESTION' && <div className="box--phase">
                         <div>otazka ahoj</div>
                     </div>
                     }
 
-                    {gamePhase === 'PARTITION' && <div>
-                        <h2>Dobývání</h2>
+                    {gamePhase === 'PARTITION' && <div className="box--phase">
+                        <p className="text--secondary text--s">Dobývání</p>
                     </div>}
 
-                    {gamePhase === 'REGION_SELECT' && <div>
-                        <h2>{inputWinner} vybírá kraj...</h2>
-                        <p>vybraný kraj {selectedRegion}</p>
+                    {gamePhase === 'REGION_SELECT' && <div className="box--phase">
+                        <p className="text--secondary text--s">{inputWinner} vybírá kraj...</p>
+                        <p className="text--secondary text--xs">Zvolený kraj: {selectedRegion}</p>
                     </div>}
 
                     <PlayerCard player={player} bot={bot}/>

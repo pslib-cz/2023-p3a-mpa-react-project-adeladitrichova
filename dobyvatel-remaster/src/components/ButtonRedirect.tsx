@@ -7,7 +7,7 @@ interface ButtonRedirectProps {
     width: string;
 }
 
-export const ButtonRedirect: React.FC<ButtonRedirectProps> = ({ buttonText, shadowColor, width  }) => {
+export const ButtonRedirect: React.FC<ButtonRedirectProps> = ({ buttonText, shadowColor, width }) => {
     return (
         <>
             <button className="button button--primary"
