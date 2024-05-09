@@ -1,6 +1,6 @@
 import React, {createContext, useReducer, useState} from 'react';
 import {GameAction, gameReducer} from './GameReducer';
-import {BotType, InputQuestion, PlayerType, RegionState} from "./types.ts";
+import {BotType, InputQuestion, OptionQuestion, PlayerType, RegionState} from "./types.ts";
 
 export const GameContext = createContext<GameContextProps | undefined>(undefined);
 
@@ -37,6 +37,20 @@ type GameContextProps = {
     setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>
     playerNeedsToChoose: boolean;
     setPlayerNeedsToChoose: React.Dispatch<React.SetStateAction<boolean>>
+    botRegion: string;
+    setBotRegion: React.Dispatch<React.SetStateAction<string>>
+    question: OptionQuestion;
+    setQuestion: React.Dispatch<React.SetStateAction<OptionQuestion | string>>
+    selectedOption: string | null;
+    setSelectedOption: React.Dispatch<React.SetStateAction<string | null>>
+    botSelectedOption: string | null;
+    setBotSelectedOption: React.Dispatch<React.SetStateAction<string | null>>
+    showOptionResults: boolean;
+    setShowOptionResults: React.Dispatch<React.SetStateAction<boolean>>;
+    optionWinner: string | null;
+    setOptionWinner: React.Dispatch<React.SetStateAction<string | null>>;
+    questionOptions: string[];
+    Option: string;
 };
 
 
@@ -195,6 +209,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
         baseColor: '#236604',
         regions: [],
     });
+
     const [inputQuestion, setInputQuestion] = useState<InputQuestion | null>(null);
     const [playerInputAnswer, setPlayerInputAnswer] = useState<number>(0);
     const [botInputAnswer, setBotInputAnswer] = useState<number | null>(null);
@@ -206,7 +221,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [gamePhase, setGamePhase] = useState('');
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [playerNeedsToChoose, setPlayerNeedsToChoose] = useState(false);
-
+    const [question, setQuestion] = useState<OptionQuestion | null>(null);
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [botSelectedOption, setBotSelectedOption] = useState<string | null>(null)
+    const [optionWinner, setOptionWinner] = useState<string | null>(null)
 
     return (
         <GameContext.Provider value={{
@@ -239,7 +257,16 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
             selectedRegion,
             setSelectedRegion,
             playerNeedsToChoose,
-            setPlayerNeedsToChoose
+            setPlayerNeedsToChoose,
+            question,
+            setQuestion,
+            selectedOption,
+            setSelectedOption,
+            botSelectedOption,
+            setBotSelectedOption,
+            optionWinner,
+            setOptionWinner,
+            Option
         }}>
             {children}
         </GameContext.Provider>

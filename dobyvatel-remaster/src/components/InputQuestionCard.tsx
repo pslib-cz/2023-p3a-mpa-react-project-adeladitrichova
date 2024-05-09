@@ -36,16 +36,11 @@ const InputQuestionCard: React.FC = () => {
 
     useEffect(() => {
         if (showInputResults) {
-            // If input results are shown, reset the timer and handle the results
             resetTimer();
-            // Handle input results...
         } else {
-            // If input results are not shown, decrement the timer
             const interval = setInterval(() => {
                 setTimer(prevTimer => prevTimer - 1);
             }, 1000);
-
-            // Clear the interval when the component unmounts or when a new question is displayed
             return () => clearInterval(interval);
         }
     }, [showInputResults]);
@@ -61,14 +56,21 @@ const InputQuestionCard: React.FC = () => {
 
     useEffect(() => {
         if (timer > 0) {
-            handleBotAnswer()
             const timeout = setTimeout(() => setTimer(timer - 1), 1000);
             return () => clearTimeout(timeout);
-        } else {
+        }
+        else {
+
             setShowInputResults(true);
             setTimeout(() => setShowInputResults(false), 15000);
         }
     }, [timer]);
+
+    useEffect(() => {
+        if (!showInputResults) {
+            handleBotAnswer();
+        }
+    }, [showInputResults]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPlayerInputAnswer(Number(event.target.value));
@@ -94,6 +96,7 @@ const InputQuestionCard: React.FC = () => {
     };
 
     const evaluateAnswer = () => {
+        setBotInputAnswer(botInputAnswer);
         if (playerInputAnswer !== null && inputQuestion !== null && botInputAnswer !== null) {
             const playerDifference = Math.abs(playerInputAnswer - inputQuestion.correctAnswer);
             const botDifference = Math.abs(botInputAnswer - inputQuestion.correctAnswer);
@@ -123,8 +126,7 @@ const InputQuestionCard: React.FC = () => {
                 setInputWinner(bot.username);
                 return {inputWinner}
             }
-        } else if (playerInputAnswer === null && inputQuestion !== null && botInputAnswer !== null) {
-            setPlayerInputAnswer(0);
+        } else if (playerInputAnswer === null && botInputAnswer !== null) {
             console.log('Hráč neodpověděl včas');
 
         }
@@ -162,7 +164,7 @@ const InputQuestionCard: React.FC = () => {
                     <div className="box box--questions box--input">
                         <p className="text--secondary text--m">{inputQuestion?.text}</p>
                         <input type="number" onChange={handleInputChange} className="input input--width" onFocus={handleStartTimer}
-                               onBlur={handleStopTimer}/>
+                               onBlur={handleStopTimer} defaultValue={0}/>
                         <button onClick={handleConfirmClick} className="button button--secondary">
                             <p className="text--m text--secondary">Potvrdit</p></button>
                     </div>

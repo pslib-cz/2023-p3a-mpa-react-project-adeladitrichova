@@ -4,9 +4,7 @@ import { useGame } from '../utils/GameContext.tsx';
 const Map: React.FC = () => {
     const { regions, gamePhase, inputWinner, player, playerNeedsToChoose, setSelectedRegion, selectedRegion } = useGame();
 
-    // Use useEffect to perform actions after selectedRegion has been updated
     useEffect(() => {
-        // Perform actions that depend on selectedRegion here
         console.log('SELECTEDREGION:', selectedRegion);
     }, [selectedRegion]);
 

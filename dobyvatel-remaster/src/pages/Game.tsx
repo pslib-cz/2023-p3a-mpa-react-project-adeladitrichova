@@ -6,8 +6,11 @@ import {actionGameTypes} from "../utils/GameReducer.tsx";
 import {useGame} from '../utils/GameContext.tsx';
 import PlayerCard from "../components/PlayerCard.tsx";
 import PlayerForm from "../components/PlayerForm.tsx";
+/*
 import InputQuestionCard from "../components/InputQuestionCard.tsx";
+*/
 import {useState, useEffect} from "react";
+import OptionQuestionCard from "../components/OptionQuestionCard.tsx";
 
 const Game = () => {
     const [showQuestion, setShowQuestion] = useState(false);
@@ -28,7 +31,7 @@ const Game = () => {
         setInputWinner,
         showInputResults,
         selectedRegion,
-        setShowInputResults
+        setShowInputResults,
     } = useGame();
 
     const randomItemFromArray = (array: any[]): any => {
@@ -75,35 +78,35 @@ const Game = () => {
         }
     };
 
-/*    const attackRegion = () => {
-        const Attacker = '';
-        const attackedByPlayerRegion = selectedRegion;
-        const attackedByBotRegion = randomItemFromArray(regions.filter((region) => region.owner === player.username))
+    /*    const attackRegion = () => {
+            const Attacker = '';
+            const attackedByPlayerRegion = selectedRegion;
+            const attackedByBotRegion = randomItemFromArray(regions.filter((region) => region.owner === player.username))
 
-        if (Attacker === player.username) {
-            setPlayer(prevPlayer => ({...prevPlayer, points: prevPlayer.points + 200}));
+            if (Attacker === player.username) {
+                setPlayer(prevPlayer => ({...prevPlayer, points: prevPlayer.points + 200}));
 
-            setRegions(prevRegions => prevRegions.map(region => {
-                if (region.id === attackedByPlayerRegion && region.owner === bot.username) {
-                    return {...region, lives: region.lives - 1};
-                } else if (region.id === attackedByBotRegion && region.owner === player.username && winner === bot.username) {
-                    return {...region, lives: 1, owner: bot.username, fill: bot.color};
-                }
-                return region;
-            }));
+                setRegions(prevRegions => prevRegions.map(region => {
+                    if (region.id === attackedByPlayerRegion && region.owner === bot.username) {
+                        return {...region, lives: region.lives - 1};
+                    } else if (region.id === attackedByBotRegion && region.owner === player.username && winner === bot.username) {
+                        return {...region, lives: 1, owner: bot.username, fill: bot.color};
+                    }
+                    return region;
+                }));
 
-        } else if (Attacker === bot.username) {
-            setBot(prevBot => ({...prevBot, points: prevBot.points + 200}));
-            setRegions(prevRegions => prevRegions.map(region => {
-                if (region.id === attackedByBotRegion && region.owner === player.username) {
-                    return {...region, lives: region.lives - 1};
-                } else if (region.id === attackedByBotRegion && region.owner === player.username && winner === bot.username) {
-                    return {...region, lives: 1, owner: bot.username, fill: bot.color};
-                }
-                return region;
-            }));
-        }
-    }*/
+            } else if (Attacker === bot.username) {
+                setBot(prevBot => ({...prevBot, points: prevBot.points + 200}));
+                setRegions(prevRegions => prevRegions.map(region => {
+                    if (region.id === attackedByBotRegion && region.owner === player.username) {
+                        return {...region, lives: region.lives - 1};
+                    } else if (region.id === attackedByBotRegion && region.owner === player.username && winner === bot.username) {
+                        return {...region, lives: 1, owner: bot.username, fill: bot.color};
+                    }
+                    return region;
+                }));
+            }
+        }*/
 
     //START GAME
     const handleStartGame = () => {
@@ -125,7 +128,6 @@ const Game = () => {
             }, 5000);
         }
     }, [gameState.gameStarted, gamePhase, displayNextQuestion]);
-
 
     useEffect(() => {
         if (showInputResults) {
@@ -151,7 +153,7 @@ const Game = () => {
                 setGamePhase('PARTITION');
                 console.log(gamePhase, 'byt partition')
                 setShowQuestion(true);
-            }, 15000);
+            }, 10000);
         }
     }, [showInputResults, showQuestion, gamePhase]);
 
@@ -173,6 +175,10 @@ const Game = () => {
             }
         }
     }, [gamePhase, showQuestion, regions]);
+
+    useEffect(() => {
+
+    }, [gamePhase === 'ATTACK']);
 
 
     return (
@@ -196,11 +202,12 @@ const Game = () => {
             {!gameState.gameStarted ? (
                 <>
                     <PlayerForm player={player} setPlayer={setPlayer}/>
-                        <button onClick={handleStartGame} className="button button--secondary"><p className="text--secondary text--s">Spustit hru</p></button>
+                    <button onClick={handleStartGame} className="button button--secondary"><p
+                        className="text--secondary text--s">Spustit hru</p></button>
                 </>
             ) : (
                 <div>
-                    {showQuestion && <InputQuestionCard/>}
+                    {showQuestion && <OptionQuestionCard />}
                     {gamePhase === 'BASE_SELECT' && <div className="box--phase">
                         <p className="text--secondary text--s">Přiřazení základen...</p>
                     </div>}
@@ -214,10 +221,25 @@ const Game = () => {
                         <p className="text--secondary text--s">Dobývání</p>
                     </div>}
 
-                    {gamePhase === 'REGION_SELECT' && <div className="box--phase">
-                        <p className="text--secondary text--s">{inputWinner} vybírá kraj...</p>
-                        <p className="text--secondary text--xs">Zvolený kraj: {selectedRegion}</p>
-                    </div>}
+                    {gamePhase === 'REGION_SELECT' && (
+                        <div className="box--phase">
+                            {inputWinner === player.username ? (
+                                <div>
+                                    <p className="text--secondary text--s">{inputWinner} vybírá kraj...</p>
+                                    <p className="text--secondary text--xs">Zvolený kraj: {selectedRegion}</p>
+                                </div>
+                            ) : inputWinner === bot.username ? (
+                                <div>
+                                    <p className="text--secondary text--s">{inputWinner} vybírá kraj...</p>
+                                    <p className="text--secondary text--xs">Zvolený kraj: {}</p>
+                                </div>
+                            ) : (
+                                <div>
+                                    <p className="text--secondary text--s">Kraje zvoleny...</p>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     <PlayerCard player={player} bot={bot}/>
                     <Map></Map>

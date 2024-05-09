@@ -1,56 +1,161 @@
-import React, { useState, useEffect } from 'react';
-import { OptionQuestion } from '../utils/types';
+import React, {useEffect} from 'react';
 import questions from '../utils/OptionQuestions.json';
+import {useGame} from "../utils/GameContext.tsx";
 
 const OptionQuestionCard: React.FC = () => {
-    const [question, setQuestion] = useState<OptionQuestion | null>(null);
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
-    const [timer, setTimer] = useState<number>(15);
+    const {
+        question,
+        setQuestion,
+        selectedOption,
+        setSelectedOption,
+        botSelectedOption,
+        setBotSelectedOption,
+        timer,
+        setTimer,
+        showOptionResults,
+        setShowOptionResults,
+        startTime,
+        setStartTime,
+        setEndTime,
+        optionWinner,
+        setOptionWinner,
+        player,
+        bot,
+        setShowInputResults,
+        showInputResults
+    }
+        = useGame();
+
+    const resetTimer = () => {
+        setTimer(15);
+    };
 
     useEffect(() => {
         const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
         setQuestion(randomQuestion);
+        setSelectedOption(null);
+
     }, []);
 
     useEffect(() => {
-        if (timer > 0) {
-            setTimeout(() => setTimer(timer - 1), 1000);
+        if (showInputResults) {
+            resetTimer();
         } else {
-            if (selectedOption === question?.answer) {
-                console.log('spravne');
-            }
-            else {
-                console.log('nespravne');
-
-            }
-            setSelectedOption(null);
-            setTimer(15);
-            const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
-            setQuestion(randomQuestion);
+            const interval = setInterval(() => {
+                setTimer(prevTimer => prevTimer - 1);
+            }, 1000);
+            return () => clearInterval(interval);
         }
-    }, [timer, selectedOption, question]);
+    }, [showInputResults]);
 
-    const handleOptionClick = (option: string) => {
-        setSelectedOption(option);
+    const handleBotAnswer = () => {
+        const botOptions = [0, 1, 2, 3];
+        const randomIndex = Math.floor(Math.random() * botOptions.length);
+        const randomAnswerIndex = botOptions[randomIndex];
+        const selectedOptionKey = String.fromCharCode(97 + randomAnswerIndex);
+        setBotSelectedOption(selectedOptionKey);
+        console.log(selectedOptionKey);
     };
 
+
+    useEffect(() => {
+        if (timer > 0) {
+            const timeout = setTimeout(() => setTimer(timer - 1), 1000);
+            return () => clearTimeout(timeout);
+        } else {
+            setShowInputResults(true);
+            setTimeout(() => setShowInputResults(false), 15000);
+        }
+    }, [timer]);
+
+    useEffect(() => {
+        if (!showInputResults) {
+            handleBotAnswer();
+        }
+    }, [showInputResults]);
+
+    const handleOptionClick = (index: number) => {
+        const selectedOptionKey = String.fromCharCode(97 + index); // Převod indexu na odpovídající klíč
+        setSelectedOption(selectedOptionKey);
+        evaluateAnswer();
+    };
+
+    const handleStartTimer = () => {
+        setStartTime(Date.now());
+    };
+
+    const handleStopTimer = () => {
+        if (startTime !== null) {
+            setEndTime(Date.now());
+
+        }
+    };
+
+    const evaluateAnswer = () => {
+        if (selectedOption !== null && question !== null && botSelectedOption !== null) {
+
+            if (selectedOption === question.answer && botSelectedOption === question.answer) {
+                console.log('Remíza');
+                setOptionWinner(null);
+
+            } else if (selectedOption !== question.answer && botSelectedOption === question.answer) {
+                setOptionWinner(bot.username);
+                console.log('BOT vyhrál:', botSelectedOption, 'hrac:', selectedOption)
+
+            } else if (selectedOption === question.answer && botSelectedOption !== question.answer) {
+                setOptionWinner(player.username);
+                console.log('HRAC vyhrál:', selectedOption, 'hrac:', botSelectedOption)
+            } else {
+                console.log("Oba hráči udělali chybu");
+            }
+        } else if (timer < 0 && selectedOption === null && botSelectedOption !== null) {
+            console.log('Hráč neodpověděl včas' ,'hrac-->' , selectedOption, botSelectedOption, '<--bot',)
+        }
+        setStartTime(null);
+        setEndTime(null);
+    };
+
+
     return (
-        <div className="question-card">
-            <div className="box box--top">
-                <div className="top--red"><p className="text--secondary text--s">Hráč 1</p></div>
-                <div className="top--gold"><p className="text--secondary text--s">{timer}</p></div>
-                <div className="top--green"><p className="text--secondary text--s">Hráč 2</p></div>
-            </div>
-            <div className="box box--questions">
-                <p className="text--secondary text--m">{question?.text}</p>
-                <div className="box box--button-grid">
-                {question?.options[0] && Object.entries(question.options[0]).map(([key, value]) => (
-                    <button className="button button--secondary" key={key} onClick={() => handleOptionClick(key)}>
-                        <p className="text--m text--secondary">{value}</p>
-                    </button>
-                ))}
+        <div>
+            {showInputResults ? (
+                <div className="question-card">
+                    <div className="box box--top">
+                        <div className="top--red"><p className="text--secondary text--s">{player.username}</p></div>
+                        <div className="top--gold"><p className="text--secondary text--s">VS</p></div>
+                        <div className="top--green"><p className="text--secondary text--s">{bot.username}</p></div>
+                    </div>
+                    <div className="box box--questions box--input">
+                        <p className="text--secondary text--m">Right answer: {question.answer}</p>
+                        <p className="text--secondary text--m">Results:</p>
+                        <p className="text--secondary text--m">{player.username} answered: {selectedOption}</p>
+                        <p className="text--secondary text--m">{bot.username} answered: {botSelectedOption}</p>
+                        <p className="text--secondary text--m">Winner: {optionWinner}</p>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="question-card">
+                    <div className="box box--top">
+                        <div className="top--red"><p className="text--secondary text--s">Hráč 1</p></div>
+                        <div className="top--gold"><p className="text--secondary text--s">{timer}</p></div>
+                        <div className="top--green"><p className="text--secondary text--s">Hráč 2</p></div>
+                    </div>
+                    <div className="box box--questions">
+                        <p className="text--secondary text--m">{question?.text}</p>
+                        <button onClick={handleBotAnswer}>nigg</button>
+                        <div className="box box--button-grid">
+
+                            {question?.options[0] && Object.entries(question.options[0]).map(([key, value], index) => (
+                                <button className="button button--secondary" key={key}
+                                        onClick={() => handleOptionClick(index)}
+                                        onFocus={handleStartTimer}
+                                        onBlur={handleStopTimer}>
+                                    <p className="text--m text--secondary">{value}</p>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </div>)}
         </div>
     );
 };
