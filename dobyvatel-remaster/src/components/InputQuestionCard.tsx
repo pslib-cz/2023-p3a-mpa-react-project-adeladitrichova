@@ -56,30 +56,22 @@ const InputQuestionCard: React.FC = () => {
 
     useEffect(() => {
         if (timer > 0) {
+            handleBotAnswer()
             const timeout = setTimeout(() => setTimer(timer - 1), 1000);
             return () => clearTimeout(timeout);
-        }
-        else {
-
+        } else {
+            evaluateAnswer();
             setShowInputResults(true);
             setTimeout(() => setShowInputResults(false), 15000);
         }
     }, [timer]);
-
-    useEffect(() => {
-        if (!showInputResults) {
-            handleBotAnswer();
-        }
-    }, [showInputResults]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPlayerInputAnswer(Number(event.target.value));
     };
 
 
-
     const handleConfirmClick = () => {
-        evaluateAnswer();
     };
 
     const handleStartTimer = () => {
@@ -96,7 +88,6 @@ const InputQuestionCard: React.FC = () => {
     };
 
     const evaluateAnswer = () => {
-        setBotInputAnswer(botInputAnswer);
         if (playerInputAnswer !== null && inputQuestion !== null && botInputAnswer !== null) {
             const playerDifference = Math.abs(playerInputAnswer - inputQuestion.correctAnswer);
             const botDifference = Math.abs(botInputAnswer - inputQuestion.correctAnswer);
@@ -114,9 +105,11 @@ const InputQuestionCard: React.FC = () => {
                         setInputWinner(bot.username);
                         return {inputWinner}
                     } else {
+                        setInputWinner('Remíza');
                         console.log('Remíza');
                     }
                 } else {
+                    setInputWinner('Remíza');
                     console.log('Remíza');
                 }
             } else if (playerDifference < botDifference) {
@@ -126,9 +119,9 @@ const InputQuestionCard: React.FC = () => {
                 setInputWinner(bot.username);
                 return {inputWinner}
             }
-        } else if (playerInputAnswer === null && botInputAnswer !== null) {
+        } else if (playerInputAnswer === null && inputQuestion !== null && botInputAnswer !== null) {
+            setPlayerInputAnswer(0);
             console.log('Hráč neodpověděl včas');
-
         }
         setPlayerInputAnswer(0);
         setStartTime(null);
@@ -136,9 +129,8 @@ const InputQuestionCard: React.FC = () => {
     };
 
 
-
     return (
-        <div>
+        <div className="dark--overlay">
             {showInputResults ? (
                 <div className="question-card">
                     <div className="box box--top">
@@ -147,11 +139,44 @@ const InputQuestionCard: React.FC = () => {
                         <div className="top--green"><p className="text--secondary text--s">{bot.username}</p></div>
                     </div>
                     <div className="box box--questions box--input">
-                        <p className="text--secondary text--m">Right answer: {inputQuestion.correctAnswer}</p>
-                        <p className="text--secondary text--m">Results:</p>
-                        <p className="text--secondary text--m">{player.username} answered: {playerInputAnswer}</p>
-                        <p className="text--secondary text--m">{bot.username} answered: {botInputAnswer}</p>
-                        <p className="text--secondary text--m">Winner: {inputWinner}</p>
+
+                        <div className="answer--part">
+                            <p className="text--secondary text--s">Správná odpověď</p>
+                            <div className="answer--right">
+                                <p className="text--secondary text--m">{inputQuestion.correctAnswer}</p>
+                            </div>
+                        </div>
+
+                        <div className="answer--part">
+                            <div className="answer--flex">
+                                <div className="answer--bg">
+                                    <div className="answer answer--player">
+                                        <p className="text--secondary text--m">{playerInputAnswer}</p>
+                                    </div>
+                                    <div className="answer-desc">
+                                        <p className="text--secondary text--xs">{player.username}</p>
+                                        <p className="text--secondary text--xs">{timer}</p>
+                                    </div>
+                                </div>
+
+                                <div className="answer--bg">
+
+                                    <div className="answer answer--bot">
+                                        <p className="text--secondary text--m">{botInputAnswer}</p>
+                                    </div>
+                                    <div className="answer-desc">
+                                        <p className="text--secondary text--xs">{bot.username}</p>
+                                        <p className="text--secondary text--xs">{timer}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="answer answer--real">
+                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                            <p className="text--secondary text--m">{inputWinner}</p>
+                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                        </div>
                     </div>
                 </div>
             ) : (
@@ -163,8 +188,9 @@ const InputQuestionCard: React.FC = () => {
                     </div>
                     <div className="box box--questions box--input">
                         <p className="text--secondary text--m">{inputQuestion?.text}</p>
-                        <input type="number" onChange={handleInputChange} className="input input--width" onFocus={handleStartTimer}
-                               onBlur={handleStopTimer} defaultValue={0}/>
+                        <input type="number" onChange={handleInputChange} className="input input--width"
+                               onFocus={handleStartTimer}
+                               onBlur={handleStopTimer}/>
                         <button onClick={handleConfirmClick} className="button button--secondary">
                             <p className="text--m text--secondary">Potvrdit</p></button>
                     </div>

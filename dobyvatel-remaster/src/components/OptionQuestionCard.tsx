@@ -21,8 +21,6 @@ const OptionQuestionCard: React.FC = () => {
         setOptionWinner,
         player,
         bot,
-        setShowInputResults,
-        showInputResults
     }
         = useGame();
 
@@ -32,13 +30,14 @@ const OptionQuestionCard: React.FC = () => {
 
     useEffect(() => {
         const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+        resetTimer();
         setQuestion(randomQuestion);
         setSelectedOption(null);
 
     }, []);
 
     useEffect(() => {
-        if (showInputResults) {
+        if (showOptionResults) {
             resetTimer();
         } else {
             const interval = setInterval(() => {
@@ -46,7 +45,7 @@ const OptionQuestionCard: React.FC = () => {
             }, 1000);
             return () => clearInterval(interval);
         }
-    }, [showInputResults]);
+    }, [showOptionResults]);
 
     const handleBotAnswer = () => {
         const botOptions = [0, 1, 2, 3];
@@ -54,28 +53,27 @@ const OptionQuestionCard: React.FC = () => {
         const randomAnswerIndex = botOptions[randomIndex];
         const selectedOptionKey = String.fromCharCode(97 + randomAnswerIndex);
         setBotSelectedOption(selectedOptionKey);
-        console.log(selectedOptionKey);
+        console.log(botSelectedOption);
     };
-
 
     useEffect(() => {
         if (timer > 0) {
             const timeout = setTimeout(() => setTimer(timer - 1), 1000);
             return () => clearTimeout(timeout);
         } else {
-            setShowInputResults(true);
-            setTimeout(() => setShowInputResults(false), 15000);
+            setShowOptionResults(true);
+            setTimeout(() => setShowOptionResults(false), 15000);
         }
     }, [timer]);
 
     useEffect(() => {
-        if (!showInputResults) {
+        if (!showOptionResults) {
             handleBotAnswer();
         }
-    }, [showInputResults]);
+    }, [showOptionResults]);
 
     const handleOptionClick = (index: number) => {
-        const selectedOptionKey = String.fromCharCode(97 + index); // Převod indexu na odpovídající klíč
+        const selectedOptionKey = String.fromCharCode(97 + index);
         setSelectedOption(selectedOptionKey);
         evaluateAnswer();
     };
@@ -96,7 +94,7 @@ const OptionQuestionCard: React.FC = () => {
 
             if (selectedOption === question.answer && botSelectedOption === question.answer) {
                 console.log('Remíza');
-                setOptionWinner(null);
+                setOptionWinner('DRAW')
 
             } else if (selectedOption !== question.answer && botSelectedOption === question.answer) {
                 setOptionWinner(bot.username);
@@ -106,9 +104,12 @@ const OptionQuestionCard: React.FC = () => {
                 setOptionWinner(player.username);
                 console.log('HRAC vyhrál:', selectedOption, 'hrac:', botSelectedOption)
             } else {
+                setOptionWinner(null);
+                setOptionWinner('NIKDO');
                 console.log("Oba hráči udělali chybu");
             }
         } else if (timer < 0 && selectedOption === null && botSelectedOption !== null) {
+            setOptionWinner(bot.username);
             console.log('Hráč neodpověděl včas' ,'hrac-->' , selectedOption, botSelectedOption, '<--bot',)
         }
         setStartTime(null);
@@ -117,32 +118,65 @@ const OptionQuestionCard: React.FC = () => {
 
 
     return (
-        <div>
-            {showInputResults ? (
+        <div className="dark--overlay">
+            {showOptionResults ? (
                 <div className="question-card">
                     <div className="box box--top">
                         <div className="top--red"><p className="text--secondary text--s">{player.username}</p></div>
                         <div className="top--gold"><p className="text--secondary text--s">VS</p></div>
                         <div className="top--green"><p className="text--secondary text--s">{bot.username}</p></div>
                     </div>
+
                     <div className="box box--questions box--input">
-                        <p className="text--secondary text--m">Right answer: {question.answer}</p>
-                        <p className="text--secondary text--m">Results:</p>
-                        <p className="text--secondary text--m">{player.username} answered: {selectedOption}</p>
-                        <p className="text--secondary text--m">{bot.username} answered: {botSelectedOption}</p>
-                        <p className="text--secondary text--m">Winner: {optionWinner}</p>
+
+                        <div className="answer--part">
+                            <p className="text--secondary text--s">Správná odpověď</p>
+                            <div className="answer--right">
+                                <p className="text--secondary text--m">{question.answer}</p>
+                            </div>
+                        </div>
+
+                        <div className="answer--part">
+                            <div className="answer--flex">
+                                <div className="answer--bg">
+                                    <div className="answer answer--player">
+                                        <p className="text--secondary text--m">{selectedOption}</p>
+                                    </div>
+                                    <div className="answer-desc">
+                                        <p className="text--secondary text--xs">{player.username}</p>
+                                        <p className="text--secondary text--xs">X</p>
+                                    </div>
+                                </div>
+
+                                <div className="answer--bg">
+
+                                    <div className="answer answer--bot">
+                                        <p className="text--secondary text--m">{botSelectedOption}</p>
+                                    </div>
+                                    <div className="answer-desc">
+                                        <p className="text--secondary text--xs">{bot.username}</p>
+                                        <p className="text--secondary text--xs">X</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div className="answer answer--real">
+                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                            <p className="text--secondary text--m">{optionWinner}</p>
+                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                        </div>
                     </div>
                 </div>
             ) : (
                 <div className="question-card">
                     <div className="box box--top">
-                        <div className="top--red"><p className="text--secondary text--s">Hráč 1</p></div>
+                        <div className="top--red"><p className="text--secondary text--s">{player.username}</p></div>
                         <div className="top--gold"><p className="text--secondary text--s">{timer}</p></div>
-                        <div className="top--green"><p className="text--secondary text--s">Hráč 2</p></div>
+                        <div className="top--green"><p className="text--secondary text--s">{bot.username}</p></div>
                     </div>
                     <div className="box box--questions">
                         <p className="text--secondary text--m">{question?.text}</p>
-                        <button onClick={handleBotAnswer}>nigg</button>
                         <div className="box box--button-grid">
 
                             {question?.options[0] && Object.entries(question.options[0]).map(([key, value], index) => (

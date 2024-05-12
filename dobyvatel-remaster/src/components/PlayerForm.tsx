@@ -21,10 +21,10 @@ const PlayerForm: React.FC<PlayerFormProps> = ({ player, setPlayer }) => {
     return (
         <>
             <form onSubmit={handleSubmit} className="box--form">
-                <label className="text--secondary text--m">Select your username:</label>
+                <label className="text--secondary text--m">Zvol si své jméno:</label>
                 <input type="text" value={name} onChange={handleNameChange} className="input box--input" />
                 <button type="submit" className="button button--secondary"><p
-                    className="text--secondary text--s">Save</p></button>
+                    className="text--secondary text--s">Uložit</p></button>
             </form>
         </>
     );

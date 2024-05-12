@@ -222,9 +222,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const [playerNeedsToChoose, setPlayerNeedsToChoose] = useState(false);
     const [question, setQuestion] = useState<OptionQuestion | null>(null);
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [selectedOption, setSelectedOption] = useState<string | null>('a');
     const [botSelectedOption, setBotSelectedOption] = useState<string | null>(null)
     const [optionWinner, setOptionWinner] = useState<string | null>(null)
+    const [showOptionResults ,setShowOptionResults] = useState(false)
 
     return (
         <GameContext.Provider value={{
@@ -266,7 +267,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
             setBotSelectedOption,
             optionWinner,
             setOptionWinner,
-            Option
+            showOptionResults,
+            setShowOptionResults,
         }}>
             {children}
         </GameContext.Provider>

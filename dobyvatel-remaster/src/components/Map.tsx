@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useGame } from '../utils/GameContext.tsx';
 
 const Map: React.FC = () => {
-    const { regions, gamePhase, inputWinner, player, playerNeedsToChoose, setSelectedRegion, selectedRegion } = useGame();
+    const { regions, gamePhase, inputWinner, player, setSelectedRegion, selectedRegion } = useGame();
 
     useEffect(() => {
         console.log('SELECTEDREGION:', selectedRegion);
@@ -25,7 +25,7 @@ const Map: React.FC = () => {
                                     d={region.d}
                                     fill={region.fill}
                                     onClick={() => handleClick(region.id)}
-                                    pointerEvents={(gamePhase === 'REGION_SELECT' && inputWinner === player.username || playerNeedsToChoose) ? 'auto' : 'none'}
+                                    pointerEvents={(gamePhase === 'REGION_SELECT' && inputWinner === player.username || gamePhase==='PLAYER_ATTACK') ? 'auto' : 'none'}
                                 />
                             );
                         })

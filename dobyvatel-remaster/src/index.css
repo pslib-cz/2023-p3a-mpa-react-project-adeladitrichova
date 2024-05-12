@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
+
+
 :root {
     --dark-brown: #220e03;
     --gold: #A3810CFF;
@@ -34,6 +36,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dark--overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
 }
 
 .question-card {
@@ -315,4 +327,116 @@ h1 {
     position: fixed;
     bottom: 0;
     gap: 6em;
+    z-index: -1;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e1d3b7;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.answer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(34,14,3,1) 19%, rgba(64,33,16,1) 62%, rgba(99,56,32,1) 89%, rgba(39,17,5,1) 99%);
+    padding: 1em;
+    border-radius: 1em;
+    gap: 1em;
+}
+
+.answer--real {
+    box-shadow: inset 0px 4px 1px 1px rgba(169,110,20,1);
+    display: flex;
+    flex-direction: row;
+    filter: drop-shadow(2px 2px 2px rgba(19, 6, 1, 0.7));
+    outline: 0.1em solid #130601B2;
+}
+
+.answer--player {
+    box-shadow: inset 0px 4px 1px 1px rgba(145,31,31,1);
+
+}
+
+.answer--bot {
+    box-shadow: inset 0px 4px 1px 1px rgba(31,145,31,1);
+}
+
+.answer--flex {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    width: 100%;
+}
+
+.answer--part {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+    text-align: center;
+}
+
+.answer--bg {
+    width: 100%;
+    border-radius: 1em;
+    padding: 0 0.2em 0.5em 0.2em;
+    background: linear-gradient(0deg, rgba(34,14,3,1) 19%, rgba(64,33,16,1) 62%, rgba(99,56,32,1) 89%, rgba(39,17,5,1) 99%);
+    filter: drop-shadow(2px 2px 2px rgba(19, 6, 1, 0.7));
+    outline: 0.1em solid #130601B2;
+}
+
+.answer--right {
+    width: 100%;
+    border: 0.15em solid #A96E14FF;
+    background: linear-gradient(180deg, rgba(45,18,3,1) 0%, rgba(34,14,3,1) 12%, rgba(27,14,7,1) 31%, rgba(27,13,6,1) 51%, rgba(26,12,4,1) 74%, rgba(37,16,4,1) 94%, rgba(40,21,10,1) 100%);
+    border-radius: 1em;
+    padding: 0.5em;
+}
+
+.answer-desc {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5em 1em 0 1em;
+}
+
+.answer--full {
+    width: 100%;
+}
+
+.answer--gold {
+    box-shadow: inset 0px 4px 1px 1px rgb(168, 109, 20);
+}
+
+.answer--top {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    border-radius: 1em;
+    padding: 0 0.2em 0.5em 0.2em;
+    background: linear-gradient(0deg, rgba(34,14,3,1) 19%, rgba(64,33,16,1) 62%, rgba(99,56,32,1) 89%, rgba(39,17,5,1) 99%);
+    filter: drop-shadow(2px 2px 2px rgba(19, 6, 1, 0.7));
+    outline: 0.1em solid #130601B2;
+}
+
+.end--screen {
+
 }
