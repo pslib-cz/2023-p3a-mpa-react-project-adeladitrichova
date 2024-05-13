@@ -68,5 +68,6 @@ export type RegionState = {
     range: string[];
     owner: null | PlayerType["username"] | BotType["username"];
     lives: number;
+    base: boolean;
 };
 

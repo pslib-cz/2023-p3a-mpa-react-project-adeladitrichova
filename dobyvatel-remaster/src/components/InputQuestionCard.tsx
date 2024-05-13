@@ -25,7 +25,7 @@ const InputQuestionCard: React.FC = () => {
     } = useGame();
 
     const resetTimer = () => {
-        setTimer(15);
+        setTimer(1);
     };
 
     useEffect(() => {
