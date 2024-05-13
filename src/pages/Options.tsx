@@ -11,7 +11,7 @@ const Rules: React.FC = () => {
                 <Route path='/' element={
                     <div className="content">
                         <div className="box box--buttons">
-                            <Link to='/' element={<App />}><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)" buttonText={"🏠︎"} width={'100%'} fontsize={"0.5em"} ></ButtonRedirect></Link>
+                            <Link to='/'><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)" buttonText={"🏠︎"} width={'100%'} ></ButtonRedirect></Link>
                             < Outlet />
                         </div>
                     </div>

@@ -2,7 +2,33 @@ import React, {createContext, useReducer, useState} from 'react';
 import {GameAction, gameReducer} from './GameReducer';
 import {BotType, InputQuestion, OptionQuestion, PlayerType, RegionState} from "./types.ts";
 
+
 export const GameContext = createContext<GameContextProps | undefined>(undefined);
+
+export const initialGameState = {
+    gameStarted: false,
+    gameEnded: false,
+    user: null,
+    color: null,
+    base: null,
+    points: 0,
+    taken: [],
+    winner: null,
+    turn: null,
+}
+
+export const gameInitialState = {
+    gameStarted: false,
+    gameEnded: false,
+    user: null,
+    color: null,
+    base: null,
+    points: 0,
+    taken: [],
+    winner: null,
+    turn: null,
+};
+
 
 export type GameState = typeof initialGameState;
 
@@ -15,8 +41,8 @@ type GameContextProps = {
     setPlayer: React.Dispatch<React.SetStateAction<PlayerType>>;
     bot: BotType;
     setBot: React.Dispatch<React.SetStateAction<BotType>>;
-    inputQuestion: InputQuestion;
-    setInputQuestion: React.Dispatch<React.SetStateAction<InputQuestion>>;
+    inputQuestion: InputQuestion | null;
+    setInputQuestion: React.Dispatch<React.SetStateAction<InputQuestion | null>>;
     playerInputAnswer: number;
     setPlayerInputAnswer: React.Dispatch<React.SetStateAction<number>>;
     botInputAnswer: number | null;
@@ -33,14 +59,12 @@ type GameContextProps = {
     setShowInputResults: React.Dispatch<React.SetStateAction<boolean>>;
     gamePhase: string;
     setGamePhase: React.Dispatch<React.SetStateAction<string>>;
-    selectedRegion: null;
+    selectedRegion: string | null;
     setSelectedRegion: React.Dispatch<React.SetStateAction<string | null>>
     playerNeedsToChoose: boolean;
     setPlayerNeedsToChoose: React.Dispatch<React.SetStateAction<boolean>>
-    botRegion: string;
-    setBotRegion: React.Dispatch<React.SetStateAction<string>>
-    question: OptionQuestion;
-    setQuestion: React.Dispatch<React.SetStateAction<OptionQuestion | string>>
+    question: OptionQuestion | null;
+    setQuestion: React.Dispatch<React.SetStateAction<OptionQuestion | null>>
     selectedOption: string | null;
     setSelectedOption: React.Dispatch<React.SetStateAction<string | null>>
     botSelectedOption: string | null;
@@ -49,12 +73,8 @@ type GameContextProps = {
     setShowOptionResults: React.Dispatch<React.SetStateAction<boolean>>;
     optionWinner: string | null;
     setOptionWinner: React.Dispatch<React.SetStateAction<string | null>>;
-    questionOptions: string[];
-    Option: string;
     playerChosenBase: string | null;
     setPlayerChosenBase: React.Dispatch<React.SetStateAction<string | null>>;
-    playerChosenRegion: string | null;
-    setPlayerChosenRegion: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 
@@ -64,17 +84,7 @@ export const useGame = () => {
     return context;
 };
 
-export const initialGameState = {
-    gameStarted: false,
-    gameEnded: false,
-    user: null,
-    color: null,
-    base: null,
-    points: 0,
-    taken: [],
-    winner: null,
-    turn: null,
-};
+
 
 
 export const regionsInitialState: RegionState[] = [
@@ -243,9 +253,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [selectedOption, setSelectedOption] = useState<string | null>('a');
     const [botSelectedOption, setBotSelectedOption] = useState<string | null>(null)
     const [optionWinner, setOptionWinner] = useState<string | null>(null)
-    const [showOptionResults ,setShowOptionResults] = useState(false)
+    const [showOptionResults, setShowOptionResults] = useState(false)
     const [playerChosenBase, setPlayerChosenBase] = useState<string | null>(null)
-    const [playerChosenRegion, setPlayerChosenRegion] = useState<string | null>(null)
 
     return (
         <GameContext.Provider value={{

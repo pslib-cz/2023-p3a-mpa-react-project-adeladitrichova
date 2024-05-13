@@ -119,7 +119,7 @@ const OptionQuestionCard: React.FC = () => {
 
     return (
         <div className="dark--overlay">
-            {showOptionResults ? (
+            {showOptionResults && question !== null ? (
                 <div className="question-card">
                     <div className="box box--top">
                         <div className="top--red"><p className="text--secondary text--s">{player.username}</p></div>
@@ -162,9 +162,9 @@ const OptionQuestionCard: React.FC = () => {
 
                         </div>
                         <div className="answer answer--real">
-                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                            <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
                             <p className="text--secondary text--m">{optionWinner}</p>
-                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                            <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
                         </div>
                     </div>
                 </div>

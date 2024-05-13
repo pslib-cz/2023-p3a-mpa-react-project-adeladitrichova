@@ -13,7 +13,7 @@ export type GameAction =
     | { type: actionGameTypes.END_GAME; payload: { } }
 
 
-export function gameReducer(state: gameInitialState, action: GameAction) {
+export function gameReducer(state: typeof gameInitialState, action: GameAction) {
     switch (action.type) {
         case actionGameTypes.START_GAME:
             return { ...state, gameStarted: true };

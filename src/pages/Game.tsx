@@ -15,7 +15,7 @@ const Game = () => {
     const [showOptionQuestionLocal, setShowOptionQuestionLocal] = useState(false);
     const [displayNextQuestion, setDisplayNextQuestion] = useState(false)
     const [botChosenRegion, setBotChosenRegion] = useState(null);
-    const [playerChosenRegion, setPlayerChosenRegion] = useState(null);
+    const [playerChosenRegion] = useState(null);
     const [rounds, setRounds] = useState(0);
     const [gameWinner, setGameWinner] = useState('');
 
@@ -506,7 +506,7 @@ const Game = () => {
                 <Route path='/' element={
                     <div className="content">
                         <div className="menu">
-                            <Link to='/' element={<App/>}>
+                            <Link to='/'>
                                 <ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
                                                 buttonText={"🏠︎"}
                                                 width={""}></ButtonRedirect></Link>
@@ -579,9 +579,9 @@ const Game = () => {
                                 <div className="box box--questions box--input">
                                     <p className="text--secondary text--l">KONEC HRY</p>
                                     <div className="answer answer--real answer--full">
-                                        <img src="../../public/images/crown.svg" alt="Crown"/>
+                                        <img src="/public/images/crown.svg" alt="Crown"/>
                                         <p className="text--secondary text--m">{gameWinner}</p>
-                                        <img src="../../public/images/crown.svg" alt="Crown"/>
+                                        <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
                                     </div>
                                     <div className="answer--flex">
                                         <div className="answer--bg">

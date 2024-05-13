@@ -10,7 +10,7 @@ const Rules: React.FC = () => {
                 <Route path='/' element={
                     <div className="content">
                         <div className="menu">
-                            <Link to='/' element={<App/>}><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
+                            <Link to='/' ><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
                                                                           buttonText={"🏠︎"}
                                                                           width={'100%'}></ButtonRedirect></Link>
                             < Outlet/>
@@ -41,7 +41,7 @@ const Rules: React.FC = () => {
                         mají možnost útočit na jakékoliv pole protivníka. Pokud útočník napadeného porazí, získává jeho
                         území a 400 bodů, kdežto poraženému se odečte hodnota jeho území. Pokud je útok veden na
                         základnu, musí útočník 3x vyhrát nad napadeným. Hráči dostávají otázky na možnosti. V případě
-                        remízy se spustí tipovací otázka.</p>
+                        remízy oba hráči získají 100 bodů.</p>
                 </div>
             </div>
         </div>

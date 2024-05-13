@@ -25,7 +25,7 @@ const InputQuestionCard: React.FC = () => {
     } = useGame();
 
     const resetTimer = () => {
-        setTimer(1);
+        setTimer(15);
     };
 
     useEffect(() => {
@@ -79,7 +79,7 @@ const InputQuestionCard: React.FC = () => {
     };
 
     const handleStopTimer = () => {
-        if (startTime !== null) {
+        if (startTime !== null && endTime !== null) {
             setEndTime(Date.now());
             const timeTaken = Math.floor((endTime - startTime) / 1000);
             console.log(`User took ${timeTaken} seconds to answer.`);
@@ -129,9 +129,10 @@ const InputQuestionCard: React.FC = () => {
     };
 
 
+    // @ts-ignore
     return (
         <div className="dark--overlay">
-            {showInputResults ? (
+            {showInputResults && inputQuestion !== null ? (
                 <div className="question-card">
                     <div className="box box--top">
                         <div className="top--red"><p className="text--secondary text--s">{player.username}</p></div>
@@ -173,9 +174,9 @@ const InputQuestionCard: React.FC = () => {
 
                         </div>
                         <div className="answer answer--real">
-                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                            <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
                             <p className="text--secondary text--m">{inputWinner}</p>
-                            <img src="../../public/images/crown.svg" alt="Crown"/>
+                            <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
                         </div>
                     </div>
                 </div>
