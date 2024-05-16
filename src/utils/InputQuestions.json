@@ -53,6 +53,50 @@
     "id": 11,
     "text": "V jakém roce byla založena společnost Google?",
     "correctAnswer": 1998
+  },
+  {
+    "id": 12,
+    "text": "v kolika jazycích byl byl na Wikipedii k dubnu 2023 k dispozici článe popisující stát Fidži?",
+    "correctAnswer": 212
+  },
+  {
+    "id": 13,
+    "text": "Jak často se koná MS v atletice? (v letech)",
+    "correctAnswer": 2
+  },
+  {
+    "id": 14,
+    "text": "Kolik válečných zajatců bylo umístěno roku 1756 do tzv. Černé díry v Kalkatě?",
+    "correctAnswer": 146
+  },
+  {
+    "id": 15,
+    "text": "Jak dlouhé mohou být liány známé jako ratan, rostoucí v jihovýchodní Asii? (v metrech)",
+    "correctAnswer": 200
+  },
+  {
+    "id": 16,
+    "text": "Jaké průměrné výšky dorůstají Pygmejové? (v cm)",
+    "correctAnswer": 150
+  },
+  {
+    "id": 17,
+    "text": "Na kolik distriktů je rozdělena kontinentální část Portugalska?",
+    "correctAnswer": 18
+  },
+  {
+    "id": 18,
+    "text": "Nejhlubší jezero bajkal má jakou maximální hloubku? (v metrech)",
+    "correctAnswer": 1642
+  },
+  {
+    "id": 19,
+    "text": "Jaké hmotnosti dosahuje kolibřík velký, největší druh kolibříka? (v gramech)",
+    "correctAnswer": 20
+  },
+  {
+    "id": 20,
+    "text": "Jak dlouhý je nejdelší most v Číně, Danyang-Kunshan? (v km)",
+    "correctAnswer": 164
   }
-
 ]

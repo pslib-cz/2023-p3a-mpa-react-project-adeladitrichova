@@ -1,23 +1,12 @@
-# Dobyvatel
+# Dobyvatel - remaster
 
 ## Téma
 
-<<<<<<< HEAD
 Jedná se o předělávku legendární vědomostní hry dobyvatel – možné je hrát ve 2 nebo 3 hráčích.
-=======
-Jedná se o hru inspirovanou vědomostní hrou dobyvatel – možné je hrát ve 2 hráčích.
->>>>>>> 96c2fcd2a5f5c8c4fdc2b3010c6679de10277850
 
 ## Odkazy pro vývoj
-
-Zde budou živé linky na:
-- [figma návrh stránek aplikace](https://www.figma.com/file/TMxolmOOOac3F4TrLrFboK/MPA-project-Ditrichova?type=design&node-id=0%3A1&mode=design&t=kpBtuzqrCjwFr2Ic-1)
-<<<<<<< HEAD
-- odkaz na gh-pages projektu
-=======
-- [odkaz na gh-pages projektu](https://pslib-cz.github.io/2023-p3a-mpa-react-project-adeladitrichova/)
->>>>>>> 96c2fcd2a5f5c8c4fdc2b3010c6679de10277850
-- odkaz do repozitáře projektu, pokud pracuji v teamu a zde vývoj neprobíhá
+- [Figma](https://www.figma.com/file/TMxolmOOOac3F4TrLrFboK/MPA-project-Ditrichova?type=design&node-id=0%3A1&mode=design&t=kpBtuzqrCjwFr2Ic-1)
+- [GitHub Pages](https://pslib-cz.github.io/2023-p3a-mpa-react-project-adeladitrichova/game)
 
 ### Z čeho čerpat
 
@@ -40,8 +29,4 @@ Zde budou živé linky na:
 
 - databáze
 - bez vlastních backend service
-<<<<<<< HEAD
 - trapné věci: *klasické karetní hry*, *člověče nezlob se*, ...
-=======
-- trapné věci: *klasické karetní hry*, *člověče nezlob se*, ...
->>>>>>> 96c2fcd2a5f5c8c4fdc2b3010c6679de10277850

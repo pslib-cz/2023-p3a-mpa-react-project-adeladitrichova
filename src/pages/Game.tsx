@@ -579,9 +579,9 @@ const Game = () => {
                                 <div className="box box--questions box--input">
                                     <p className="text--secondary text--l">KONEC HRY</p>
                                     <div className="answer answer--real answer--full">
-                                        <img src="/public/images/crown.svg" alt="Crown"/>
+                                        <img src="/images/crown.svg" alt="Crown"/>
                                         <p className="text--secondary text--m">{gameWinner}</p>
-                                        <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
+                                        <img src="/images/crown.svg" alt="Crown"/>
                                     </div>
                                     <div className="answer--flex">
                                         <div className="answer--bg">

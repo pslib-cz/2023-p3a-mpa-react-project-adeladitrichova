@@ -162,9 +162,9 @@ const OptionQuestionCard: React.FC = () => {
 
                         </div>
                         <div className="answer answer--real">
-                            <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
+                            <img src="/images/crown.svg" alt="Crown"/>
                             <p className="text--secondary text--m">{optionWinner}</p>
-                            <img src="/2023-p3a-mpa-react-project-adeladitrichova/public/images/crown.svg" alt="Crown"/>
+                            <img src="/images/crown.svg" alt="Crown"/>
                         </div>
                     </div>
                 </div>
