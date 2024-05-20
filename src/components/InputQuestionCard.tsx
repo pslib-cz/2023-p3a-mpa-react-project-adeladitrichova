@@ -21,11 +21,7 @@ const InputQuestionCard: React.FC = () => {
         inputWinner,
         setInputWinner,
         showInputResults,
-        setShowInputResults,
-        botResponseTime,
-        setBotResponseTime,
-        playerResponseTime,
-        setPlayerResponseTime
+        setShowInputResults
     } = useGame();
 
     const resetTimer = () => {
@@ -54,15 +50,13 @@ const InputQuestionCard: React.FC = () => {
             const correctAnswer = inputQuestion.correctAnswer;
             const randomOffset = Math.floor(Math.random() * 21) - 10;
             const randomAnswer = correctAnswer + randomOffset;
-            const botTimeTaken = Math.floor(Math.random() * 13) + 2;
             setBotInputAnswer(randomAnswer);
-            setBotResponseTime(botTimeTaken);
         }
     }
 
     useEffect(() => {
         if (timer > 0) {
-            handleBotAnswer();
+            handleBotAnswer()
             const timeout = setTimeout(() => setTimer(timer - 1), 1000);
             return () => clearTimeout(timeout);
         } else {
@@ -76,12 +70,8 @@ const InputQuestionCard: React.FC = () => {
         setPlayerInputAnswer(Number(event.target.value));
     };
 
+
     const handleConfirmClick = () => {
-        setEndTime(Date.now());
-        if (startTime !== null) {
-            const playerTimeTaken = Math.floor((Date.now() - startTime) / 1000);
-            setPlayerResponseTime(playerTimeTaken);
-        }
     };
 
     const handleStartTimer = () => {
@@ -89,10 +79,11 @@ const InputQuestionCard: React.FC = () => {
     };
 
     const handleStopTimer = () => {
-        if (startTime !== null && endTime === null) {
+        if (startTime !== null && endTime !== null) {
             setEndTime(Date.now());
-            const playerTimeTaken = Math.floor((Date.now() - startTime) / 1000);
-            setPlayerResponseTime(playerTimeTaken);
+            const timeTaken = Math.floor((endTime - startTime) / 1000);
+            console.log(`User took ${timeTaken} seconds to answer.`);
+
         }
     };
 
@@ -102,31 +93,43 @@ const InputQuestionCard: React.FC = () => {
             const botDifference = Math.abs(botInputAnswer - inputQuestion.correctAnswer);
 
             if (playerDifference === botDifference) {
-                if (playerResponseTime !== null && botResponseTime !== null) {
-                    if (playerResponseTime < botResponseTime) {
+                if (startTime !== null && endTime !== null) {
+                    const botTimeTaken = Math.floor(Math.random() * 13) + 2;
+                    const playerTimeTaken = Math.floor((endTime - startTime) / 1000);
+                    console.log(`Remíza, USER: ${playerTimeTaken}s, BOT: ${botTimeTaken}s`);
+
+                    if (playerTimeTaken < botTimeTaken) {
                         setInputWinner(player.username);
-                    } else if (playerResponseTime > botResponseTime) {
+                        return {inputWinner}
+                    } else if (playerTimeTaken > botTimeTaken) {
                         setInputWinner(bot.username);
+                        return {inputWinner}
                     } else {
-                        setInputWinner('Tie');
+                        setInputWinner('Remíza');
+                        console.log('Remíza');
                     }
                 } else {
-                    setInputWinner('Tie');
+                    setInputWinner('Remíza');
+                    console.log('Remíza');
                 }
             } else if (playerDifference < botDifference) {
                 setInputWinner(player.username);
+                return {inputWinner}
             } else {
                 setInputWinner(bot.username);
+                return {inputWinner}
             }
         } else if (playerInputAnswer === null && inputQuestion !== null && botInputAnswer !== null) {
             setPlayerInputAnswer(0);
-            console.log('Player did not answer in time');
+            console.log('Hráč neodpověděl včas');
         }
         setPlayerInputAnswer(0);
         setStartTime(null);
         setEndTime(null);
     };
 
+
+    // @ts-ignore
     return (
         <div className="dark--overlay">
             {showInputResults && inputQuestion !== null ? (
@@ -139,7 +142,7 @@ const InputQuestionCard: React.FC = () => {
                     <div className="box box--questions box--input">
 
                         <div className="answer--part">
-                            <p className="text--secondary text--s">Correct Answer</p>
+                            <p className="text--secondary text--s">Správná odpověď</p>
                             <div className="answer--right">
                                 <p className="text--secondary text--m">{inputQuestion.correctAnswer}</p>
                             </div>
@@ -153,26 +156,27 @@ const InputQuestionCard: React.FC = () => {
                                     </div>
                                     <div className="answer-desc">
                                         <p className="text--secondary text--xs">{player.username}</p>
-                                        <p className="text--secondary text--xs">⏱︎ {playerResponseTime} s</p>
+                                        <p className="text--secondary text--xs">{timer}</p>
                                     </div>
                                 </div>
 
                                 <div className="answer--bg">
+
                                     <div className="answer answer--bot">
                                         <p className="text--secondary text--m">{botInputAnswer}</p>
                                     </div>
                                     <div className="answer-desc">
                                         <p className="text--secondary text--xs">{bot.username}</p>
-                                        <p className="text--secondary text--xs">⏱︎ {botResponseTime} s</p>
+                                        <p className="text--secondary text--xs">{timer}</p>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
                         <div className="answer answer--real">
-                            <img src="./images/crown.svg" alt="Crown"/>
+                            <img src="/images/crown.svg" alt="Crown"/>
                             <p className="text--secondary text--m">{inputWinner}</p>
-                            <img src="./images/crown.svg" alt="Crown"/>
+                            <img src="/images/crown.svg" alt="Crown"/>
                         </div>
                     </div>
                 </div>
@@ -189,7 +193,7 @@ const InputQuestionCard: React.FC = () => {
                                onFocus={handleStartTimer}
                                onBlur={handleStopTimer}/>
                         <button onClick={handleConfirmClick} className="button button--secondary">
-                            <p className="text--m text--secondary">Confirm</p></button>
+                            <p className="text--m text--secondary">Potvrdit</p></button>
                     </div>
                 </div>
             )}
