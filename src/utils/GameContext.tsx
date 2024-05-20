@@ -75,6 +75,10 @@ type GameContextProps = {
     setOptionWinner: React.Dispatch<React.SetStateAction<string | null>>;
     playerChosenBase: string | null;
     setPlayerChosenBase: React.Dispatch<React.SetStateAction<string | null>>;
+    botResponseTime: number | null;
+    setBotResponseTime: React.Dispatch<React.SetStateAction<number | null>>;
+    playerResponseTime: number | null;
+    setPlayerResponseTime: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
 
@@ -255,6 +259,8 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [optionWinner, setOptionWinner] = useState<string | null>(null)
     const [showOptionResults, setShowOptionResults] = useState(false)
     const [playerChosenBase, setPlayerChosenBase] = useState<string | null>(null)
+    const [botResponseTime, setBotResponseTime] = useState<number | null>(null)
+    const [playerResponseTime, setPlayerResponseTime] = useState<number | null>(null)
 
     return (
         <GameContext.Provider value={{
@@ -300,6 +306,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
             setShowOptionResults,
             playerChosenBase,
             setPlayerChosenBase,
+            botResponseTime,
+            setBotResponseTime,
+            playerResponseTime,
+            setPlayerResponseTime
         }}>
             {children}
         </GameContext.Provider>
