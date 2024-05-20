@@ -5,7 +5,7 @@ import Options from "./pages/Options.tsx";
 import { ButtonRedirect } from './components/ButtonRedirect.tsx';
 import { Outlet, Route, Routes, Link } from 'react-router-dom'
 
-
+//test wtf proc to nejde
 function App() {
   return (
     <>
