@@ -248,8 +248,7 @@ const Game = () => {
             setTimeout(() => {
                 setShowQuestion(true);
             }, 5000);
-        }
-        else {
+        } else {
             console.log('else 1. useEffect', gamePhase)
         }
     }, [gameState.gameStarted, gamePhase, displayNextQuestion]);
@@ -264,9 +263,7 @@ const Game = () => {
                 console.log('if 2. useEffect', gamePhase)
             }, 5000);
             return () => clearTimeout(timer);
-        }
-
-        else {
+        } else {
             console.log('else 2. useEffect', gamePhase)
         }
 
@@ -284,8 +281,7 @@ const Game = () => {
                 console.log(gamePhase, 'byt partition')
                 setShowQuestion(true);
             }, 10000);
-        }
-        else {
+        } else {
             console.log('else 2,5. useEffect')
         }
     }, [showInputResults, showQuestion, gamePhase]);
@@ -347,13 +343,13 @@ const Game = () => {
         }, [gameState.gameStarted && showInputResults]);*/
 
 
-    const handleEndGame = () => {
+/*    const handleEndGame = () => {
         window.location.reload();
         gameDispatch({
             type: actionGameTypes.END_GAME,
             payload: ''
         })
-    }
+    }*/
 
     //ATTACK --> PLAYER
     useEffect(() => {
@@ -420,7 +416,7 @@ const Game = () => {
             setRounds(prevRounds => prevRounds + 1);
             console.log('PRVNI BOT USEEFFECT KOLA:', rounds)
 
-            if (rounds < 8 ) {
+            if (rounds < 8) {
                 botSelectAttackRegion();
                 console.log('3 BOT_ATTACK')
                 console.log('under rounds')
@@ -556,7 +552,8 @@ const Game = () => {
                             </div>
                             <div className="answer-desc">
                                 <p className="text--secondary text--xs">Tah {player.username}</p>
-                                <p className="text--secondary text--xs">na území: {selectedRegion} {playerChosenRegion}</p>
+                                <p className="text--secondary text--xs">na
+                                    území: {selectedRegion} {playerChosenRegion}</p>
                             </div>
                         </div>}
 
@@ -603,8 +600,21 @@ const Game = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <button onClick={handleEndGame} className="button button--secondary"><p
-                                        className="text--secondary text--s">Ukončit hru</p></button>
+                                    <Routes>
+                                        <Route path='/' element={
+                                            <div className="content">
+                                                <div className="box box--buttons">
+                                                    <Link to='/game'>
+                                                        <ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
+                                                                        buttonText={"Hrát znovu"}
+                                                                        width={""}></ButtonRedirect></Link>
+                                                    <Outlet/>
+                                                </div>
+                                            </div>
+                                        }>
+                                        </Route>
+                                        <Route path='/' element={<App/>}/>
+                                    </Routes>
                                 </div>
                             </div>
                         </div>

@@ -10,9 +10,9 @@ const Rules: React.FC = () => {
                 <Route path='/' element={
                     <div className="content">
                         <div className="menu">
-                            <Link to='/' ><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
-                                                          buttonText={"🏠︎"}
-                                                          width={'100%'}></ButtonRedirect></Link>
+                            <Link to='/'><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
+                                                         buttonText={"🏠︎"}
+                                                         width={'100%'}></ButtonRedirect></Link>
                             < Outlet/>
                         </div>
                     </div>
@@ -31,16 +31,18 @@ const Rules: React.FC = () => {
                     <p className="text--secondary text--xs">V každé bitvě je hráčům položena společná tipovací otázka.
                         Vítěz
                         si
-                        vybere území. Takto získaná území mají hodnotu 200 bodů. Toto kolo trvá
-                        tak dlouho, dokud jsou k dispzici volná území.
+                        vybere území. Takto získaná území mají hodnotu 200 bodů. Pro zodpovězení hráč napíše číslo a
+                        klikne na potvrdit. Toto kolo trvá
+                        tak dlouho, dokud jsou k dispozici volná území.
                     </p>
                 </div>
                 <div>
                     <p className="text--secondary text--s">III. Bitva</p>
-                    <p className="text--secondary text--xs">Bitva má 4 kola a v každém kole hrají 2 hráči. Se střídají a
+                    <p className="text--secondary text--xs">Bitva má 4 kola a v každém kole hrají 2 hráči. Hráči se
+                        střídají a
                         mají možnost útočit na jakékoliv pole protivníka. Pokud útočník napadeného porazí, získává jeho
-                        území a 400 bodů, kdežto poraženému se odečte hodnota jeho území. Pokud je útok veden na
-                        základnu, musí útočník 3x vyhrát nad napadeným. Hráči dostávají otázky na možnosti. V případě
+                        území a 400 bodů, kdežto poraženému se odečte hodnota jeho území. Hráči dostávají otázky na
+                        možnosti. Pro zodpovězení otázky se musí dvakrát kliknout na zvolenou odpověď. V případě
                         remízy oba hráči získají 100 bodů.</p>
                 </div>
             </div>
