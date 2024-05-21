@@ -6,7 +6,7 @@ Jedná se o předělávku legendární vědomostní hry dobyvatel – možné je
 
 ## Odkazy pro vývoj
 - [Figma](https://www.figma.com/file/TMxolmOOOac3F4TrLrFboK/MPA-project-Ditrichova?type=design&node-id=0%3A1&mode=design&t=kpBtuzqrCjwFr2Ic-1)
-- [GitHub Pages](https://pslib-cz.github.io/2023-p3a-mpa-react-project-adeladitrichova/game)
+- [GitHub Pages](https://pslib-cz.github.io/2023-p3a-mpa-react-project-adeladitrichova/)
 
 ### Z čeho čerpat
 
