@@ -314,8 +314,6 @@ h1 {
 }
 
 .map {
-    z-index: -2;
-    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;

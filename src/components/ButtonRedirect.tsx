@@ -11,10 +11,10 @@ export const ButtonRedirect: React.FC<ButtonRedirectProps> = ({ buttonText, shad
     return (
         <>
             <button className="button button--primary"
-                style={{
-                    boxShadow: `inset 0px 5px 1px 1px ${shadowColor}`,
-                    width: width,
-                }}>
+                    style={{
+                        boxShadow: `inset 0px 5px 1px 1px ${shadowColor}`,
+                        width: width,
+                    }}>
                 <p className="text text--button">{buttonText}</p>
             </button>
         </>

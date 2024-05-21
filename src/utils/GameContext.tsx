@@ -260,7 +260,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({children}
     const [showOptionResults, setShowOptionResults] = useState(false)
     const [playerChosenBase, setPlayerChosenBase] = useState<string | null>(null)
     const [botResponseTime, setBotResponseTime] = useState<number | null>(null)
-    const [playerResponseTime, setPlayerResponseTime] = useState<number | null>(null)
+    const [playerResponseTime, setPlayerResponseTime] = useState<number | null>(15)
 
     return (
         <GameContext.Provider value={{

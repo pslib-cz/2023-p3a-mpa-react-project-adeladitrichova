@@ -11,8 +11,8 @@ const Rules: React.FC = () => {
                     <div className="content">
                         <div className="menu">
                             <Link to='/' ><ButtonRedirect shadowColor="rgba(145, 31, 31, 1)"
-                                                                          buttonText={"🏠︎"}
-                                                                          width={'100%'}></ButtonRedirect></Link>
+                                                          buttonText={"🏠︎"}
+                                                          width={'100%'}></ButtonRedirect></Link>
                             < Outlet/>
                         </div>
                     </div>
