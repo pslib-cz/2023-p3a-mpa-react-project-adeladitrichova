@@ -1,15 +1,12 @@
-# Název mého projektu, programu, hry...
+# Dobyvatel - remaster
 
 ## Téma
 
-Tady bude krátký a úderný popis o účelu, významu, funkcionalitě...
+Jedná se o předělávku legendární vědomostní hry dobyvatel – možné je hrát ve 2 nebo 3 hráčích.
 
 ## Odkazy pro vývoj
-
-Zde budou živé linky na:
-- figma návrh stránek aplikace
-- odkaz na gh-pages projektu
-- odkaz do repozitáře projektu, pokud pracuji v teamu a zde vývoj neprobíhá
+- [Figma](https://www.figma.com/file/TMxolmOOOac3F4TrLrFboK/MPA-project-Ditrichova?type=design&node-id=0%3A1&mode=design&t=kpBtuzqrCjwFr2Ic-1)
+- [GitHub Pages](https://pslib-cz.github.io/2023-p3a-mpa-react-project-adeladitrichova/)
 
 ### Z čeho čerpat
 
@@ -28,7 +25,7 @@ Zde budou živé linky na:
 - využití react-routeru
 - funkčnost na mobilu (výjimka je předělávka komplexních deskových her)
 
-### Co není obsahem 
+### Co není obsahem
 
 - databáze
 - bez vlastních backend service

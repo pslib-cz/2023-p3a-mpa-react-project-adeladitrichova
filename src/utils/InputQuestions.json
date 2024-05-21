@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "text": "Kolik je v České republice krajů?",
+    "correctAnswer": 14
+  },
+  {
+    "id": 2,
+    "text": "Kolik je 2+1*7?",
+    "correctAnswer": 9
+  },
+  {
+    "id": 3,
+    "text": "V jakém roce bylo založeno město Brno?",
+    "correctAnswer": 1243
+  },
+  {
+    "id": 4,
+    "text": "Na kolik spolkových zemí je rozděleno Rakousko?",
+    "correctAnswer": 9
+  },
+  {
+    "id": 5,
+    "text": "Ve kterém roce se hrál poprvé hokej na olympijských hrách?",
+    "correctAnswer": 1920
+  },
+  {
+    "id": 6,
+    "text": "S kolika státy USA hraničí Oregon",
+    "correctAnswer": 4
+  },
+  {
+    "id": 7,
+    "text": "V jakém roce byl zavražděn Abraham Lincoln?",
+    "correctAnswer": 1865
+  },
+  {
+    "id": 8,
+    "text": "Ve kterém roce proběhly první novodobé olympijské hry?",
+    "correctAnswer": 1896
+  },
+  {
+    "id": 9,
+    "text": "Kolik stupňů síly tornáda se rozlišuje v Fujitově stupnici?",
+    "correctAnswer": 6
+  },
+  {
+    "id": 10,
+    "text": "Ve kterém roce byla postavena Berlínská zeď?",
+    "correctAnswer": 1961
+  },
+  {
+    "id": 11,
+    "text": "V jakém roce byla založena společnost Google?",
+    "correctAnswer": 1998
+  },
+  {
+    "id": 12,
+    "text": "v kolika jazycích byl byl na Wikipedii k dubnu 2023 k dispozici článe popisující stát Fidži?",
+    "correctAnswer": 212
+  },
+  {
+    "id": 13,
+    "text": "Jak často se koná MS v atletice? (v letech)",
+    "correctAnswer": 2
+  },
+  {
+    "id": 14,
+    "text": "Kolik válečných zajatců bylo umístěno roku 1756 do tzv. Černé díry v Kalkatě?",
+    "correctAnswer": 146
+  },
+  {
+    "id": 15,
+    "text": "Jak dlouhé mohou být liány známé jako ratan, rostoucí v jihovýchodní Asii? (v metrech)",
+    "correctAnswer": 200
+  },
+  {
+    "id": 16,
+    "text": "Jaké průměrné výšky dorůstají Pygmejové? (v cm)",
+    "correctAnswer": 150
+  },
+  {
+    "id": 17,
+    "text": "Na kolik distriktů je rozdělena kontinentální část Portugalska?",
+    "correctAnswer": 18
+  },
+  {
+    "id": 18,
+    "text": "Nejhlubší jezero bajkal má jakou maximální hloubku? (v metrech)",
+    "correctAnswer": 1642
+  },
+  {
+    "id": 19,
+    "text": "Jaké hmotnosti dosahuje kolibřík velký, největší druh kolibříka? (v gramech)",
+    "correctAnswer": 20
+  },
+  {
+    "id": 20,
+    "text": "Jak dlouhý je nejdelší most v Číně, Danyang-Kunshan? (v km)",
+    "correctAnswer": 164
+  }
+]

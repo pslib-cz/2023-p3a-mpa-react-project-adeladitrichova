@@ -1,0 +1,285 @@
+[
+  {
+    "id": 1,
+    "text": "Kolik je v Evropské Unii zemí?",
+    "options": [
+      {
+        "a": "25",
+        "b": "27",
+        "c": "28",
+        "d": "30"
+      }
+    ],
+    "answer": "c"
+
+  },
+
+  {
+    "id": 2,
+    "text": "Jak se křestním jménem jmenuje autor písně 'Ledový srdce'?",
+    "options": [
+      {
+        "a": "Lukáš",
+        "b": "Tomáš",
+        "c": "Nemáš",
+        "d": "Nemá křestní jméno"
+      }
+    ],
+    "answer": "a"
+  },
+
+  {
+    "id": 3,
+    "text": "Jak se nazývá největší kočkovitá šelma na západní polokouli?",
+    "options": [
+      {
+        "a": "Tygr usurijský",
+        "b": "Ocelot velký",
+        "c": "Puma americká",
+        "d": "Jaguár americký"
+      }
+    ],
+    "answer": "d"
+
+  },
+
+  {
+    "id": 4,
+    "text": "Který druh tuleně žije mj. u finského jezera Saimaa a je předmětem ochrany národního parku Linnasaari?",
+    "options": [
+      {
+        "a": "Tuleň kuželozubý",
+        "b": "Tuleň grónský",
+        "c": "Tuleň kroužkovaný",
+        "d": "Tuleň vousatý"
+      }
+    ],
+    "answer": "c"
+
+  },
+
+  {
+    "id": 5,
+    "text": "Jaký ekvivalent má u nás japonský svátek Ošógacu?",
+    "options": [
+      {
+        "a": "Vánoce",
+        "b": "Nový rok",
+        "c": "Velikonoce",
+        "d": "Dušičky"
+      }
+    ],
+    "answer": "b"
+
+  },
+  {
+    "id": 6,
+    "text": "Jaký typ živočicha je seriema?",
+    "options": [
+      {
+        "a": "Pralesní žába",
+        "b": "Běhavý pták",
+        "c": "Plaz",
+        "d": "Mořská ryba"
+      }
+    ],
+    "answer": "b"
+
+  },
+  {
+    "id": 7,
+    "text": "Kde žije titán obrovský, největší známý brouk?",
+    "options": [
+      {
+        "a": "V severoamerických prériích",
+        "b": "V deštných pralesích jihovýchodní Asie",
+        "c": "endemicky u jezera Atitlán v Guatemale",
+        "d": "V amazonských deštných pralesích"
+      }
+    ],
+    "answer": "d"
+
+  },
+  {
+    "id": 8,
+    "text": "Jak se jmenovala instituce, která měla na starost výslech kacířů?",
+    "options": [
+      {
+        "a": "expozice",
+        "b": "akvizice",
+        "c": "inkvizice",
+        "d": "konfiskace"
+      }
+    ],
+    "answer": "c"
+
+  },
+  {
+    "id": 9,
+    "text": "Co znamená název stavby uprostřed velké mešity v Mekce Kaaba?",
+    "options": [
+      {
+        "a": "Krychle",
+        "b": "Svatyně",
+        "c": "Místo",
+        "d": "Oltář"
+      }
+    ],
+    "answer": "a"
+
+  },
+  {
+    "id": 10,
+    "text": "Jak se jmenuje třetí nejdelší řeka Austrálie?",
+    "options": [
+      {
+        "a": "Darling",
+        "b": "Sweetheart",
+        "c": "Honey",
+        "d": "Dear"
+      }
+    ],
+    "answer": "a"
+
+  },
+  {
+    "id": 11,
+    "text": "Jak se správně zoologicky jmenuje medvěd andský, žijící na severozápadě Jižní Ameriky?",
+    "options": [
+      {
+        "a": "Medvěd ušatý",
+        "b": "Medvěd brýlatý",
+        "c": "Mevděd pyskatý",
+        "d": "Medvěd baribal"
+      }
+    ],
+    "answer": "b"
+
+  },
+  {
+    "id": 12,
+    "text": "Která z nabízených zemí nesousedí s Čínou?",
+    "options": [
+      {
+        "a": "Laos",
+        "b": "Vietnam",
+        "c": "Mongolsko",
+        "d": "Kambodža"
+      }
+    ],
+    "answer": "d"
+
+  },
+  {
+    "id": 13,
+    "text": "Jaká měna platí v Kostarice?",
+    "options": [
+      {
+        "a": "Kostarický dolar",
+        "b": "Kostarický sol",
+        "c": "Kostarický colón",
+        "d": "Kostarický florin"
+      }
+    ],
+    "answer": "c"
+
+  },
+  {
+    "id": 14,
+    "text": "Ve které zemi se konalo MS v ledním hokeji v roce 2019?",
+    "options": [
+      {
+        "a": "V Rusku",
+        "b": "Na Slovensku",
+        "c": "V Dánsku",
+        "d": "Ve Finsku"
+      }
+    ],
+    "answer": "b"
+
+  },
+  {
+    "id": 15,
+    "text": "Které z následujících pohoří se nacházi v Turecku?",
+    "options": [
+      {
+        "a": "Taurus",
+        "b": "Kavkaz",
+        "c": "Pirin",
+        "d": "Tumba"
+      }
+    ],
+    "answer": "a"
+
+  },
+  {
+    "id": 16,
+    "text": "Jakou barvu má himalájská sůl?",
+    "options": [
+      {
+        "a": "Šedou",
+        "b": "Bílou",
+        "c": "Světle zelenou",
+        "d": "Růžovou"
+      }
+    ],
+    "answer": "d"
+
+  },
+  {
+    "id": 17,
+    "text": "Ve kterém městě sídlí UNICEF?",
+    "options": [
+      {
+        "a": "V Paříži",
+        "b": "V Ženevě",
+        "c": "V New Yorku",
+        "d": "V Haagu"
+      }
+    ],
+    "answer": "c"
+
+  },
+  {
+    "id": 18,
+    "text": "Západoafrickou Gambií protéká jaká řeka?",
+    "options": [
+      {
+        "a": "Eufrat",
+        "b": "Senegal",
+        "c": "Gambia",
+        "d": "Volta"
+      }
+    ],
+    "answer": "c"
+
+  },
+  {
+    "id": 19,
+    "text": "Jak se odborně jmenuje technika vycpávání a preparování živočichů?",
+    "options": [
+      {
+        "a": "Taxidermie",
+        "b": "Taxonomie",
+        "c": "Taxametr",
+        "d": "Taxidermometr"
+      }
+    ],
+    "answer": "a"
+
+  },
+  {
+    "id": 20,
+    "text": "Jak se nazývá potomek bělocha a černocha?",
+    "options": [
+      {
+        "a": "Mestic",
+        "b": "Mulat",
+        "c": "Kajot",
+        "d": "Mestizo"
+      }
+    ],
+    "answer": "a"
+
+  }
+]
